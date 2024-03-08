@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { LoggerMiddleware } from './logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './resource/auth/auth.module';
 import { ProfileModule } from './resource/profile/profile.module';
@@ -7,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './resource/auth/jwt.constant';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './resource/auth/auth.guard';
+import { TokenMiddleware } from './middleware/token.middleware';
 
 @Module({
   imports: [
@@ -25,7 +25,7 @@ import { AuthGuard } from './resource/auth/auth.guard';
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: jwtConstants.expiredTime, algorithm: jwtConstants.algorithm },
+      signOptions: { expiresIn: jwtConstants.accessTokenExpiry, algorithm: jwtConstants.algorithm },
     }),
     AuthModule,
     ProfileModule,
@@ -40,7 +40,8 @@ import { AuthGuard } from './resource/auth/auth.guard';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
+      .apply(TokenMiddleware)
+      .exclude('/auth')
       .forRoutes('*');
   }
 }

@@ -7,4 +7,16 @@ export class ProfileRepository extends Repository<Profile> {
   constructor(dataSource: DataSource) {
     super(Profile, dataSource.createEntityManager());
   }
+
+  findByAccountId(accountId: string) {
+    return this.findOne({
+      where: {
+        account: {
+          id: accountId,
+          is_active: true,
+        },
+        is_active: true,
+      }
+    });
+  }
 }

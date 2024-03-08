@@ -21,4 +21,9 @@ export class AuthController extends BaseController {
   async login(@Res() res: Response, @Body() loginDto: RegisterLoginDto) {
     return this.executeService(res, await this.authService.login(loginDto));
   }
+
+  @Post('refresh')
+  async refresh(@Res() res: Response, @Body('refresh_token') refreshToken: string) {
+    return this.executeService(res, await this.authService.refresh(refreshToken));
+  }
 }

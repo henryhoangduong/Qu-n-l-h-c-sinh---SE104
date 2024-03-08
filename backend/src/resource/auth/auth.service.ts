@@ -5,6 +5,7 @@ import { Account } from './entities/account.entity';
 import * as bcrypt from 'bcrypt';
 import { BaseResponse } from 'src/core/base.response';
 import { JwtService } from '@nestjs/jwt';
+import { jwtConstants } from './jwt.constant';
 
 @Injectable()
 export class AuthService {
@@ -28,14 +29,41 @@ export class AuthService {
 
   async login(loginDto: RegisterLoginDto) {
     try {
-      const account = await this.authRepository.findOne({ where: { username: loginDto.username } });
-      if (!account) throw new UnauthorizedException();
+      const account = await this.authRepository.findByUsername(loginDto.username);
+      if (!account) throw new UnauthorizedException('Invalid username or password.');
       const isPasswordMatch = await bcrypt.compare(loginDto.password, account.password);
-      if (!isPasswordMatch) throw new UnauthorizedException();
-      const payload = { sub: account?.id, username: account?.username };
-      const accessToken = await this.jwtService.signAsync(payload);
+      if (!isPasswordMatch) throw new UnauthorizedException('Invalid username or password.');
+      const payload = {
+        sub: account?.id,
+        username: account?.username,
+      };
+      const accessToken = await this.jwtService.signAsync(
+        { ...payload, type: 'access_token', },
+        { expiresIn: jwtConstants.refreshTokenExpiry }
+      );
+      const refreshToken = await this.jwtService.signAsync(
+        { ...payload, type: 'refresh_token', },
+        { expiresIn: jwtConstants.refreshTokenExpiry }
+      );
       const data = {
-        account,
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      }
+      return new BaseResponse(HttpStatus.OK, true, data, null);
+    } catch (error) {
+      return new BaseResponse(HttpStatus.BAD_REQUEST, false, null, error.message);
+    }
+  }
+
+  async refresh(refreshToken: string) {
+    try {
+      const jwtPayload = this.jwtService.verify(refreshToken);
+      const payload = {
+        sub: jwtPayload.sub,
+        username: jwtPayload.username
+      };
+      const accessToken = await this.jwtService.signAsync(payload, { expiresIn: jwtConstants.accessTokenExpiry });
+      const data = {
         access_token: accessToken,
       }
       return new BaseResponse(HttpStatus.OK, true, data, null);
