@@ -1,19 +1,16 @@
-const supabase = require('../database/supabase')
+const client = require('../database/supabase.js')
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
-function signin(email,password) {
-    const payload = {
-        email: email,
-        password: password
-    }
-    const token = jwt.sign(payload, process.env.JWT_KEY);
-    return token
+async function signin(email, password) {
+    const data =await client.from('student').select('*').eq('')
 }
 
 function signout() {
     return
 }
+
+signin('henryhoangduong@gmail.com', 'password');
 
 module.exports= {signin, signout}
 
