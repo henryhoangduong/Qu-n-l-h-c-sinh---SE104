@@ -1,6 +1,5 @@
-require('dotenv').config();
-const supabase =require('@supabase/supabase-js')
-
+const supabase = require('@supabase/supabase-js');
+require("dotenv").config({ path: '../.env' });
 
 const client = supabase.createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
