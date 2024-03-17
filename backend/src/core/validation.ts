@@ -1,6 +1,6 @@
 import { validate } from 'class-validator';
 
-export async function reqBodyValidation(reqBody: any) {
+export async function reqBodyValidation(reqBody) {
   const errors = await validate(reqBody);
   if (errors.length > 0) {
     throw new Error(

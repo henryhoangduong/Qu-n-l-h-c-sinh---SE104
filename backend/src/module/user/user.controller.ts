@@ -1,5 +1,5 @@
 import { getToken } from 'src/core/jwt.config';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { myDataSource } from 'src/data-source';
 import { Account } from '../auth/entities/account.entity';
 import { decode } from 'jsonwebtoken';
@@ -9,7 +9,7 @@ import { BaseResponse } from 'src/core/base.response';
 export const findInformationController = async (
   req: Request,
   res: Response,
-  next: any,
+  next: NextFunction,
 ) => {
   try {
     const accessToken = getToken(req);

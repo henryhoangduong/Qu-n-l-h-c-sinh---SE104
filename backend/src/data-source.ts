@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { Account } from './module/auth/entities/account.entity';
 import { User } from './module/user/entities/user.entity';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/vi';
 import { Role } from './module/user/entities/role';
 import { Gender } from './module/user/entities/gender';
 import * as bcrypt from 'bcrypt';
@@ -12,8 +12,8 @@ export const myDataSource = new DataSource({
   type: 'postgres',
   host: 'aws-0-ap-southeast-1.pooler.supabase.com',
   port: 5432,
-  username: 'postgres.wmnmernievmlbxiyghgq',
-  password: 'chưa biết pass huhu D:',
+  username: 'postgres.uockadroshuyzposeohe',
+  password: 'uitproject2024',
   database: 'postgres',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
@@ -35,7 +35,7 @@ myDataSource
 
 async function createSampleUsers() {
   const accounts: Account[] = [];
-  for (let i = 21520000; i < 21523000; i++) {
+  for (let i = 21520000; i < 21520010; i++) {
     const hashedPassword = await bcrypt.hash('password', 10);
     const account = new Account({
       identifierId: i,
@@ -51,9 +51,14 @@ async function createSampleUsers() {
       email: account.identifierId + '@gm.uit.edu.vn',
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
-      dateOfBirth: faker.date.past().getTime(),
-      phone: faker.phone.number(),
-      address: faker.location.streetAddress(),
+      dateOfBirth: faker.date
+        .between({
+          from: new Date('1999-01-01').getTime(),
+          to: new Date('2005-12-31').getTime(),
+        })
+        .getTime(),
+      phone: faker.phone.number('(+84) ### ### ###'),
+      address: faker.location.streetAddress(true),
       gender: faker.helpers.enumValue(Gender),
       avatarUrl: faker.image.avatar(),
     });

@@ -1,11 +1,10 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { BaseResponse } from 'src/core/base.response';
 import {
   accessTokenSign,
   refreshTokenSign,
   refreshJwt,
 } from 'src/core/jwt.config';
-import { JwtType } from 'src/core/jwt.type';
 import { myDataSource } from 'src/data-source';
 import { SignInResponseDTO } from './dto/sign-in-response.dto';
 import { Account } from './entities/account.entity';
@@ -14,11 +13,12 @@ import { reqBodyValidation } from 'src/core/validation';
 import { RefreshTokenRequestDTO } from './dto/refresh-token-request.dto';
 import { User } from '../user/entities/user.entity';
 import * as bcrypt from 'bcrypt';
+import { JwtPayload } from 'jsonwebtoken';
 
 export const signInController = async (
   req: Request,
   res: Response,
-  next: any,
+  next: NextFunction,
 ) => {
   try {
     const reqBody = new SignInRequestDTO(await req.body);
@@ -48,18 +48,20 @@ export const signInController = async (
     if (!user) {
       throw new Error('User not found');
     }
-    const payload = {
+    const accessTokenPayload: JwtPayload = {
       sub: account?.id,
-      username: account?.identifierId,
+      identifierId: account?.identifierId,
       role: user.role,
+      tokenType: 'ACCESS_TOKEN',
     };
-    const accessTokenType: JwtType = 'ACCESS_TOKEN';
-    const refreshTokenType: JwtType = 'REFRESH_TOKEN';
-    const accessToken = accessTokenSign({ ...payload, type: accessTokenType });
-    const refreshToken = refreshTokenSign({
-      ...payload,
-      type: refreshTokenType,
-    });
+    const accessToken = accessTokenSign(accessTokenPayload);
+    const refreshTokenPayload: JwtPayload = {
+      sub: account?.id,
+      identifierId: account?.identifierId,
+      role: user.role,
+      tokenType: 'REFRESH_TOKEN',
+    };
+    const refreshToken = refreshTokenSign(refreshTokenPayload);
     const responseData = new SignInResponseDTO({
       accessToken,
       refreshToken,
@@ -78,14 +80,14 @@ export const signInController = async (
 export const refreshController = async (
   req: Request,
   res: Response,
-  next: any,
+  next: NextFunction,
 ) => {
   try {
     const reqBody = new RefreshTokenRequestDTO(await req.body);
     await reqBodyValidation(reqBody);
     const accessToken = refreshJwt(reqBody.refreshToken);
     const data = {
-      accessToken: accessToken,
+      accessToken,
     };
     const response = new BaseResponse({
       code: 200,
