@@ -1,4 +1,4 @@
-import { JwtPayload, decode, sign } from 'jsonwebtoken';
+import { JwtPayload, decode, sign, verify } from 'jsonwebtoken';
 import { Request } from 'express';
 
 const secretKey =
@@ -22,6 +22,7 @@ export function refreshTokenSign(payload: JwtPayload): string {
 }
 
 export function refreshJwt(refreshToken: string): string {
+  verifyToken(refreshToken);
   const jwtPayload = decode(refreshToken) as JwtPayload;
   const payload: JwtPayload = {
     sub: jwtPayload.sub,
@@ -41,4 +42,8 @@ export function getToken(req: Request): string | null {
     return authorizationHeader.substring(7);
   }
   return null;
+}
+
+export function verifyToken(token: string) {
+  verify(token, secretKey);
 }

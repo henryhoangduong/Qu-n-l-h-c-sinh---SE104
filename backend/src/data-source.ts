@@ -6,7 +6,7 @@ import { Role } from './module/user/entities/role';
 import { Gender } from './module/user/entities/gender';
 import * as bcrypt from 'bcrypt';
 
-const isCreateFakeData = true;
+const isCreateFakeData = false;
 
 export const myDataSource = new DataSource({
   type: 'postgres',

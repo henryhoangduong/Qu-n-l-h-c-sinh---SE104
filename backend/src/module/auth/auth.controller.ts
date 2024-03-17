@@ -13,7 +13,7 @@ import { reqBodyValidation } from 'src/core/validation';
 import { RefreshTokenRequestDTO } from './dto/refresh-token-request.dto';
 import { User } from '../user/entities/user.entity';
 import * as bcrypt from 'bcrypt';
-import { JwtPayload } from 'jsonwebtoken';
+import { generateTokenPayload } from 'src/core/jwt.type';
 
 export const signInController = async (
   req: Request,
@@ -48,19 +48,17 @@ export const signInController = async (
     if (!user) {
       throw new Error('User not found');
     }
-    const accessTokenPayload: JwtPayload = {
-      sub: account?.id,
-      identifierId: account?.identifierId,
-      role: user.role,
-      tokenType: 'ACCESS_TOKEN',
-    };
+    const accessTokenPayload = generateTokenPayload(
+      account,
+      user,
+      'ACCESS_TOKEN',
+    );
     const accessToken = accessTokenSign(accessTokenPayload);
-    const refreshTokenPayload: JwtPayload = {
-      sub: account?.id,
-      identifierId: account?.identifierId,
-      role: user.role,
-      tokenType: 'REFRESH_TOKEN',
-    };
+    const refreshTokenPayload = generateTokenPayload(
+      account,
+      user,
+      'REFRESH_TOKEN',
+    );
     const refreshToken = refreshTokenSign(refreshTokenPayload);
     const responseData = new SignInResponseDTO({
       accessToken,
