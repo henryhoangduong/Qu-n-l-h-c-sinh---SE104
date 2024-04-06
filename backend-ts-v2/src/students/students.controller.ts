@@ -1,4 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
 
 import { Student } from '../entitie/entities/Student';
 import { StudentsService } from './students.service';
@@ -12,23 +20,23 @@ export class StudentsController {
     return this.studentService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: number): Promise<Student> {
-  //   return this.studentService.findOne(id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<Student> {
+    return this.studentService.findOne(id);
+  }
 
-  // @Post()
-  // create(@Body() student: Student): Promise<Student> {
-  //   return this.studentService.create(student);
-  // }
+  @Post()
+  create(@Body() student: Student): Promise<Student> {
+    return this.studentService.create(student);
+  }
 
-  // @Put(':id')
-  // update(@Param('id') id: number, @Body() student: Student): Promise<Student> {
-  //   return this.studentService.update(id, student);
-  // }
+  @Put(':id')
+  update(@Param('id') id: string, @Body() student: Student): Promise<Student> {
+    return this.studentService.update(id, student);
+  }
 
-  // @Delete(':id')
-  // delete(@Param('id') id: number): Promise<void> {
-  //   return this.studentService.delete(id);
-  // }
+  @Delete(':id')
+  delete(@Param('id') id: number): Promise<void> {
+    return this.studentService.delete(id);
+  }
 }

@@ -14,21 +14,21 @@ export class StudentsService {
     return this.studentRepository.find();
   }
 
-  // findOne(id: number): Promise<Student> {
-  //   return this.studentRepository.findOne(id);
-  // }
+  findOne(id: string): Promise<Student> {
+    return this.studentRepository.findOne({ where: { id } });
+  }
 
-  // async create(student: Student): Promise<Student> {
-  //   const newStudent = this.studentRepository.create(student);
-  //   return this.studentRepository.save(newStudent);
-  // }
+  async create(student: Student): Promise<Student> {
+    const newStudent = this.studentRepository.create(student);
+    return this.studentRepository.save(newStudent);
+  }
 
-  // async update(id: number, student: Student): Promise<Student> {
-  //   await this.studentRepository.update(id, student);
-  //   return this.studentRepository.findOne(id);
-  // }
+  async update(id: string, student: Student): Promise<Student> {
+    await this.studentRepository.update(id, student);
+    return this.studentRepository.findOne({ where: { id } });
+  }
 
-  // async delete(id: number): Promise<void> {
-  //   await this.studentRepository.delete(id);
-  // }
+  async delete(id: number): Promise<void> {
+    await this.studentRepository.delete(id);
+  }
 }
