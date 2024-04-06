@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 
-import { Student } from '../entitie/entities/Student';
+import { Student } from '../../entitie/entities/Student';
 import { StudentsService } from './students.service';
 
 @Controller('students')

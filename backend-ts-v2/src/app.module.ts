@@ -1,11 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import { StudentsModule } from './students/students.module';
 import { TeachersModule } from './teachers/teachers.module';
-import { ClassesModule } from './classes/classes.module';
+import { ClassesModule } from './modules/classes/classes.module';
+import { StudentsModule } from './modules/students/students.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guard/auth.guard';
+import { AuthRepository } from './modules/auth/auth.repository';
 
 @Module({
   imports: [
@@ -14,8 +16,14 @@ import { ClassesModule } from './classes/classes.module';
     StudentsModule,
     TeachersModule,
     ClassesModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+    AuthRepository,
+  ],
 })
 export class AppModule {}
