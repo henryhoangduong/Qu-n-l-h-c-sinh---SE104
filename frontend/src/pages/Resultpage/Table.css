@@ -1,0 +1,125 @@
+.table-wrapper {
+    width: 100%;
+  }
+  
+  .table {
+    display: block;
+    overflow: hidden;
+    table-layout: fixed;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 10px #ccc;
+    border-radius: 10px;
+    white-space: nowrap;
+    width: 100em;
+    max-width: 80%;
+    margin: auto;
+    table-layout: auto;
+    overflow-x: auto;
+  }
+  
+  .table thead {
+    background-color: #ccc;
+    color: #222;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.8rem;
+  }
+  
+  .table td {
+    border-top: 0.5px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #eee;
+  }
+  
+  .expand {
+    width: 50%;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  
+  .expand1 {
+    width: 25%;
+    text-align: center;
+    text-wrap: wrap;
+    word-break: break-all;  
+  }
+  
+  .label {
+    border-radius: 3px;
+    padding: 0.3rem;
+    color: white;
+  }
+  
+  .label-draft {
+    background-color: #777;
+  }
+  
+  .label-live {
+    background-color: #42a942;
+  }
+  
+  .label-error {
+    background-color: #d9534f;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .actions svg {
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    color: #e10d05;
+  }
+  
+  .Sum
+  { 
+    padding: 10px 20px ;
+    background-color: #ccc;;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #ccc;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+  
+  .inp
+  { 
+    padding: 10px;
+    width: 70px;
+    margin-right: 10px;
+    border-style:none ;
+    background-color: #ccc;
+    color: #222;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+  }
+  .inp1
+  { 
+    width: 180px !important;
+  }
+  
+  .Title
+  {
+    width: 80%;
+    padding: 20px;
+    margin-bottom: 100px;
+    background-color: #ccc;;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #ccc;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+  }
+  
