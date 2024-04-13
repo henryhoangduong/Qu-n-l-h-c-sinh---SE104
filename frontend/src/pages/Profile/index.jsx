@@ -42,15 +42,10 @@ function Profile() {
                             <p className="font-medium underline mt-4">Mr. </p>
                             <p>
                                 {" "}
-                                (Customer's address)
+                                (Class)
                                 <FontAwesomeIcon icon={faPenToSquare} className="edit-button" />
                             </p>
 
-                            <p>
-                                I am Monkey D Luffy - who will become King Of Pirate in the
-                                future (Customer's bio)
-                                <FontAwesomeIcon icon={faPenToSquare} className="edit-button" />
-                            </p>
                         </div>
                         <div className="flex-5 flex justify-center items-center"></div>
                     </div>
@@ -99,7 +94,7 @@ function Profile() {
                         </div>
                         <div class="form-group mt-3">
                             <label htmlFor="last1" class="article">
-                                Home Address
+                                Class
                             </label>
                             <input
                                 type="text"
