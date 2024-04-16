@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Teacher } from '../entitie/entities/Teacher';
@@ -9,7 +13,19 @@ export class TeacherService {
     @InjectRepository(Teacher)
     private teacherRepository: Repository<Teacher>,
   ) {}
+  async logIn(email: string, password: string): Promise<Teacher> {
+    const student = await this.teacherRepository.findOne({ where: { email } });
 
+    if (!student) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    if (student.password !== password) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    return student;
+  }
   async findOne(id: string): Promise<Teacher> {
     const teacher = await this.teacherRepository.findOne({ where: { id } });
     if (!teacher) {
