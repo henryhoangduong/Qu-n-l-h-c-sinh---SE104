@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Teacher } from '../entitie/entities/Teacher';
+import { Teacher } from '../../entitie/entities/Teacher';
 
 @Injectable()
 export class TeacherService {
