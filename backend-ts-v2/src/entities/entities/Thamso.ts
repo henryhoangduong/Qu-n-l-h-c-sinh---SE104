@@ -1,6 +1,5 @@
-import { Column, Entity, Index } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 
-@Index('thamso_pkey', ['mathamso'], { unique: true })
 @Entity('thamso', { schema: 'public' })
 export class Thamso {
   @Column('integer', { name: 'tuoitoithieu', nullable: true })
