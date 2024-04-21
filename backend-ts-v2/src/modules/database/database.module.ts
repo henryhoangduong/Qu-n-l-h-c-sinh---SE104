@@ -23,7 +23,7 @@ import { SubjectClass } from 'src/entitie/entities/SubjectClass';
         entities: ['dist/**/*.entity{.ts,.js}'],
         synchronize: true,
         autoLoadEntities: true,
-        dropSchema: true,
+        dropSchema: false,
       }),
       inject: [ConfigService],
     }),
