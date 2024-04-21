@@ -1,15 +1,23 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Student } from 'src/entitie/entities/Student';
-import { StudentClass } from 'src/entitie/entities/StudentClass';
-import { Exam } from 'src/entitie/entities/Exam';
-import { Teacher } from 'src/entitie/entities/Teacher';
-import { Subject } from 'src/entitie/entities/Subject';
-import { Class } from 'src/entitie/entities/Class';
-import { Grade } from 'src/entitie/entities/Grade';
-import { SubjectClass } from 'src/entitie/entities/SubjectClass';
-
+import {
+  Bangdiemmon,
+  Baocaotongkethocki,
+  Baocaotongketmon,
+  Chitietbangdiemmon,
+  Chitietdiemloaihinhkiemtra,
+  Chitietdslop,
+  Hocki,
+  Chitiettongketmon,
+  Khoilop,
+  Hocsinh,
+  Loaihinhkiemtra,
+  Lop,
+  Monhoc,
+  Namhoc,
+  Thamso,
+} from '../../entities';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -28,14 +36,21 @@ import { SubjectClass } from 'src/entitie/entities/SubjectClass';
       inject: [ConfigService],
     }),
     TypeOrmModule.forFeature([
-      Student,
-      StudentClass,
-      Exam,
-      Subject,
-      Teacher,
-      Class,
-      Grade,
-      SubjectClass,
+      Bangdiemmon,
+      Baocaotongkethocki,
+      Baocaotongketmon,
+      Chitietbangdiemmon,
+      Chitietdiemloaihinhkiemtra,
+      Chitietdslop,
+      Hocki,
+      Chitiettongketmon,
+      Khoilop,
+      Hocsinh,
+      Loaihinhkiemtra,
+      Lop,
+      Monhoc,
+      Namhoc,
+      Thamso,
     ]),
   ],
 })
