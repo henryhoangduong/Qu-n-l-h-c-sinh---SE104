@@ -20,4 +20,7 @@ export class StudentService {
   findAll(): Promise<Hocsinh[]> {
     return this.hocsinhRepository.find();
   }
+  findOne(mahocsinh: number): Promise<Hocsinh> {
+    return this.hocsinhRepository.findOne({ where: { mahocsinh } });
+  }
 }
