@@ -16,7 +16,6 @@ export class ChitietdslopService {
   ) {}
 
   async create(chitietdslopDto: ChitietdslopDto): Promise<void> {
-    const data = new Chitietdslop();
     const lop = await this.classService.findOne(chitietdslopDto.classid);
     console.log(chitietdslopDto.studentlists);
     const chitietdslops = chitietdslopDto.studentlists.map(
