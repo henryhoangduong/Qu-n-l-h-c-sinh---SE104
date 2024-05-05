@@ -41,4 +41,8 @@ export class Chitietdiemloaihinhkiemtra {
   )
   @JoinColumn([{ name: 'malhkt', referencedColumnName: 'malhkt' }])
   malhkt2: Loaihinhkiemtra;
+
+  constructor(partial?: Partial<Chitietdiemloaihinhkiemtra>) {
+    Object.assign(this, partial);
+  }
 }
