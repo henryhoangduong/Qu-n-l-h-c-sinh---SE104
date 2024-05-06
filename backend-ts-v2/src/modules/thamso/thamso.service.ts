@@ -11,6 +11,9 @@ export class ThamsoService {
     @InjectRepository(Thamso)
     private readonly thamsoRepository: Repository<Thamso>,
   ) {}
+  async read(): Promise<Thamso[]> {
+    return this.thamsoRepository.find();
+  }
   async change(thamso: ThamsoDto): Promise<void> {
     console.log('tham so: ', thamso);
     const options: FindOneOptions<Thamso> = {
