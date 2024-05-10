@@ -51,7 +51,6 @@ export class StudentService {
       where: where,
     };
 
-    // Return the result of the findOne method
     return await this.hocsinhRepository.findOne(options);
   }
   findOne(mahocsinh: number): Promise<Hocsinh> {
