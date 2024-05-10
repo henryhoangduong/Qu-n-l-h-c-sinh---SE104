@@ -4,6 +4,9 @@ import { Repository } from 'typeorm';
 import { Hocsinh } from '../../entities';
 import { StudentCreateDto } from 'src/data-object/student-create.dto';
 import { ThamsoService } from '../thamso/thamso.service';
+import { StudentOptionsDto } from 'src/data-object/studentoptions.dto';
+import { FindOneOptions } from 'typeorm';
+
 @Injectable()
 export class StudentService {
   constructor(
@@ -32,6 +35,24 @@ export class StudentService {
   }
   findAll(): Promise<Hocsinh[]> {
     return this.hocsinhRepository.find();
+  }
+  async findByOptions(studentOptionsDto: StudentOptionsDto): Promise<Hocsinh> {
+    let where: any = {};
+
+    if (studentOptionsDto.mahocsinh) {
+      where = { mahocsinh: studentOptionsDto.mahocsinh };
+    } else if (studentOptionsDto.hoten) {
+      where = { hoten: studentOptionsDto.hoten };
+    } else if (studentOptionsDto.dtb) {
+      where = { dtb: studentOptionsDto.dtb };
+    }
+
+    const options: FindOneOptions<Hocsinh> = {
+      where: where,
+    };
+
+    // Return the result of the findOne method
+    return await this.hocsinhRepository.findOne(options);
   }
   findOne(mahocsinh: number): Promise<Hocsinh> {
     return this.hocsinhRepository.findOne({ where: { mahocsinh } });
