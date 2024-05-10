@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { Account } from "src/entitie/entities/Account";
-import { DataSource, Repository } from "typeorm";
+import { Injectable } from '@nestjs/common';
+import { Account } from 'src/entitie/entities/Account';
+import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
 export class AuthRepository extends Repository<Account> {
@@ -13,7 +13,7 @@ export class AuthRepository extends Repository<Account> {
       where: {
         identifierId: identifierId,
         isActive: true,
-      }
+      },
     });
     return account;
   }

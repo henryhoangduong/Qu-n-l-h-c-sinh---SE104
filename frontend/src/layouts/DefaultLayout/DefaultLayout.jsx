@@ -1,7 +1,6 @@
-import ComplexNavBar from '../Components/NavBar';
-import SideBar from '../Components/SideBar'    
+import ComplexNavBar from '../Components/NavBar'; 
 import PropTypes from 'prop-types';
-import Profile from '../../pages/Profile';
+
 function DefaultLayout({children}) {
     return (  
         <div>

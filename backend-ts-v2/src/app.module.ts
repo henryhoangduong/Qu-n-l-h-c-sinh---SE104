@@ -1,29 +1,23 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from './database/database.module';
+import { DatabaseModule } from './modules/database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import { TeachersModule } from './teachers/teachers.module';
-import { ClassesModule } from './modules/classes/classes.module';
-import { StudentsModule } from './modules/students/students.module';
-import { AuthModule } from './modules/auth/auth.module';
-import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from './guard/auth.guard';
-import { AuthRepository } from './modules/auth/auth.repository';
+import { StudentModule } from './modules/student/student.module';
+import { ClassModule } from './modules/class/class.module';
+import { ChitietdslopModule } from './modules/chitietdslop/chitietdslop.module';
+import { BaocaoModule } from './modules/baocao/baocao.module';
+import { ThamsoModule } from './modules/thamso/thamso.module';
+import { ScoreModule } from './modules/score/score.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
-    StudentsModule,
-    TeachersModule,
-    ClassesModule,
-    AuthModule,
-  ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
-    AuthRepository,
+    StudentModule,
+    ClassModule,
+    ChitietdslopModule,
+    BaocaoModule,
+    ThamsoModule,
+    ScoreModule,
   ],
 })
 export class AppModule {}

@@ -2,13 +2,17 @@ import config from "../config";
 import Login from "../pages/Login";
 import DefaultLayout from "../layouts/DefaultLayout";
 import LoginRegisterLayout from "../layouts/LoginRegisterLayout";
-import Profile from '../pages/Profile';
+import StudentProfile from '../pages/Student/Profile';
+import StudentAttendance from "../pages/Student/Attendance";
+import SemesterSumary from "../pages/Teacher/SemesterSumary";
 import Home from "../pages/Home";
 
 const PublicRoutes = [
     { path: config.routes.login, component: Login, layout: LoginRegisterLayout },
-    { path: config.routes.profile, component: Profile, layout: DefaultLayout },
-    { path: config.routes.start, component: Home, layout: DefaultLayout }
+    { path: config.routes.studentprofile, component: StudentProfile, layout: DefaultLayout },
+    { path: config.routes.start, component: Home, layout: DefaultLayout },
+    { path: config.routes.studentattendance, component: StudentAttendance, layout: DefaultLayout },
+    { path: config.routes.semestersumary, component: SemesterSumary, layout: DefaultLayout }
 ];
 
 export { PublicRoutes };
