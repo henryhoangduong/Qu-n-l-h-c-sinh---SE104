@@ -7,6 +7,7 @@ import { ChitietdslopModule } from './modules/chitietdslop/chitietdslop.module';
 import { BaocaoModule } from './modules/baocao/baocao.module';
 import { ThamsoModule } from './modules/thamso/thamso.module';
 import { ScoreModule } from './modules/score/score.module';
+import { MonhocModule } from './modules/monhoc/monhoc.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ScoreModule } from './modules/score/score.module';
     BaocaoModule,
     ThamsoModule,
     ScoreModule,
+    MonhocModule,
   ],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Post } from '@nestjs/common';
+import { Controller, Body, Post } from '@nestjs/common';
 import { ChitietdslopService } from './chitietdslop.service';
 import { ChitietdslopDto } from 'src/data-object/chitietdslop.dto';
 @Controller('chitietdslop')
