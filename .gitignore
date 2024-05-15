@@ -1,2 +1,5 @@
 ﻿backend-ts/node_modules
+frontend/node_modules
+frontend/yarn.lock
+frontend/node_modules
 backend-ts-v2/yarn.lock
