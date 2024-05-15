@@ -2,7 +2,7 @@ import { IsNotEmpty, MinLength } from 'class-validator';
 
 export class LoginReqDto {
   @IsNotEmpty()
-  identifierId: number;
+  username: string;
 
   @IsNotEmpty()
   @MinLength(8)

@@ -1,60 +1,27 @@
-import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { LoginReqDto } from 'src/data-object/login-req.dto';
-import { AuthRepository } from './auth.repository';
-import { BaseResponse } from 'src/core/base.response';
-import {
-  accessTokenSign,
-  generateTokenPayload,
-  refreshTokenSign,
-} from 'src/core/jwt.config';
-import { LoginResDto } from 'src/data-object/login-res.dto';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly authRepository: AuthRepository) {}
+  constructor(private jwtService: JwtService) {}
 
-  async login(
-    loginDto: LoginReqDto,
-  ): Promise<BaseResponse<LoginResDto | undefined>> {
-    try {
-      const account = await this.authRepository.findByIdentifierId(
-        loginDto.identifierId,
-      );
-      if (!account) throw new UnauthorizedException('Invalid id or password.');
-      // const isPasswordMatch = await bcrypt.compare(loginDto.password, account.password);
-      const isPasswordMatch = loginDto.password === account.password;
-      if (!isPasswordMatch)
-        throw new UnauthorizedException('Invalid username or password.');
-      const accessTokenPayload = generateTokenPayload(
-        account,
-        account.user,
-        'ACCESS_TOKEN',
-      );
-      const refreshTokenPayload = generateTokenPayload(
-        account,
-        account.user,
-        'REFRESH_TOKEN',
-      );
-      const accessToken = accessTokenSign(accessTokenPayload);
-      const refreshToken = refreshTokenSign(refreshTokenPayload);
-      const data: LoginResDto = {
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        user: account.user,
+  async login(loginReqDto: LoginReqDto): Promise<{ access_token: string }> {
+    if (
+      loginReqDto.username.toLowerCase() == 'admin' &&
+      loginReqDto.password == '12345678'
+    ) {
+      const payload = {
+        username: loginReqDto.username,
+        password: loginReqDto.password,
+        role: 'admin',
       };
-      return new BaseResponse<LoginResDto>(
-        HttpStatus.OK,
-        true,
-        data,
-        undefined,
-      );
-    } catch (error) {
-      return new BaseResponse<undefined>(
-        HttpStatus.BAD_REQUEST,
-        false,
-        undefined,
-        error.message,
-      );
+      return {
+        access_token: await this.jwtService.signAsync(payload),
+      };
+    } else {
+      throw new UnauthorizedException();
     }
   }
 }
