@@ -2,7 +2,6 @@ import "./Attendance.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCheck, faCalendarDays, faCircleCheck, faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "../../../layouts/Components/SideBarStudent";
-import React, { useEffect, useState } from "react";
 
 
 function CurrentDate() {
@@ -112,11 +111,6 @@ function Attendance() {
                                                 <option selected>Choose a month</option>
                                                 <option value="1">January</option>
                                                 <option value="2">February</option>
-                                                <option value="3">March</option>
-                                                <option value="4">April</option>
-                                                <option value="5">May</option>
-                                                <option value="6">June</option>
-                                                <option value="7">July</option>
                                                 <option value="8">August</option>
                                                 <option value="9">September</option>
                                                 <option value="10">October</option>
@@ -128,7 +122,12 @@ function Attendance() {
                                             <FontAwesomeIcon icon={faCalendarCheck} size="3x" />
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                           <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+     
 
                             </div>
                         </div>
