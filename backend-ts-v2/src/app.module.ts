@@ -8,6 +8,7 @@ import { BaocaoModule } from './modules/baocao/baocao.module';
 import { ThamsoModule } from './modules/thamso/thamso.module';
 import { ScoreModule } from './modules/score/score.module';
 import { MonhocModule } from './modules/monhoc/monhoc.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MonhocModule } from './modules/monhoc/monhoc.module';
     ThamsoModule,
     ScoreModule,
     MonhocModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
