@@ -3,7 +3,8 @@ const routes = {
     login: '/login',
     studentprofile: '/profile',
     studentattendance: '/attendance',
-    semestersumary: '/semestersumary'
+    semestersumary: '/semestersumary',
+    change: 'change'
 };
     
 export default routes;
