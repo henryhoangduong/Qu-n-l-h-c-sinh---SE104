@@ -39,7 +39,7 @@ function SideBarStudent() {
     {
       icon: <FontAwesomeIcon icon={faRightFromBracket} className='sidebar__icon' />,
       title: 'Thay đổi',
-    //   to: config.routes.login
+      to: config.routes.change
     }
   ];
 
