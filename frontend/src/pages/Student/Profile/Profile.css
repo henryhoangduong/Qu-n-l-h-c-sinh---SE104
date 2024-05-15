@@ -42,6 +42,19 @@
     border: 1px solid black;
 }
 
+.input-article-bd{
+    font-size: 15px;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 12px 20px;
+    width: 22%;
+    border-radius: 10px;
+    color: black;
+    font-weight: 500;
+    background-color: white;
+    border: 1px solid black;
+}
+
 .input-radio{
     width: 30px;
     height:30px;
