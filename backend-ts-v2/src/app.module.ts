@@ -9,6 +9,8 @@ import { ThamsoModule } from './modules/thamso/thamso.module';
 import { ScoreModule } from './modules/score/score.module';
 import { MonhocModule } from './modules/monhoc/monhoc.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './modules/auth/auth.guard';
 
 @Module({
   imports: [
@@ -23,5 +25,6 @@ import { AuthModule } from './modules/auth/auth.module';
     MonhocModule,
     AuthModule,
   ],
+  providers: [{ provide: APP_GUARD, useClass: AuthGuard }],
 })
 export class AppModule {}

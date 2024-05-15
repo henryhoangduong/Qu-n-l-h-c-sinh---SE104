@@ -2,10 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { LoginReqDto } from 'src/data-object/login-req.dto';
 import { UnauthorizedException } from '@nestjs/common';
+import { Hocsinh } from 'src/entities';
+import { StudentService } from '../student/student.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService) {}
+  constructor(
+    private jwtService: JwtService,
+    private studentService: StudentService,
+  ) {}
 
   async login(loginReqDto: LoginReqDto): Promise<{ access_token: string }> {
     if (
@@ -23,5 +28,8 @@ export class AuthService {
     } else {
       throw new UnauthorizedException();
     }
+  }
+  async readStudent(): Promise<Hocsinh[]> {
+    return this.studentService.findAll();
   }
 }
