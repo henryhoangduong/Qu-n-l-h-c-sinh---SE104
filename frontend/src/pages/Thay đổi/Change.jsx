@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import axios from "axios"
-import './Change.css'
+import styles from  './Change.module.css'
 import { useState } from "react"
 
 function Change() {
@@ -40,9 +40,9 @@ function Change() {
         }
     }
     return (
-        <div className="flex form_area" style={{width: '60vw', marginLeft: '50%',transform:'translateX(-50%)',marginTop: '10px'}}>
+        <div className={`flex h-80 ${styles.form_area}`} style={{width: '60vw'}}>
                 <div className="profile-content" style={{ width: "60vw",paddingLeft: '30px',paddingBottom:'10px' }}>
-                    <h1 className="font-medium text-3xl mt-16">Thay đổi tham số</h1>
+                    <h1 className="font-medium text-3xl mt-8">Thay đổi tham số</h1>
                     {/* line 1 */}
                     <div className="flex items-center">
                         <div className="horizontal-line"></div>
@@ -59,13 +59,13 @@ function Change() {
                             name='tuoitoithieu'
                             type="user"
                             id="last"
-                            class="input-article"
+                            class={styles.input_article}
                             style={{ width: "90%" }}
                             />
                         </div>
 
-                        <div className="flex mt-3">
-                            <div class="form-group">
+                        <div className="flex mt-1">
+                            <div class={styles.form_group}>
                                 <label for="email" class="article">
                                     Tuổi tối đa
                                 </label>
@@ -75,11 +75,11 @@ function Change() {
                                 name ='tuoitoida'
                                 type="text"
                                 id="email"
-                                class="input-article"
+                                class={styles.input_article}
                                 title="This field is read-only"
                                 />
                             </div>
-                            <div class="form-group">
+                            <div class={styles.form_group}>
                                 <label for="phone" class="article">
                                     Sỉ số tối đa
                                 </label>
@@ -89,11 +89,11 @@ function Change() {
                                 name ='sisotoida'
                                 type="text"
                                 id="phone"
-                                class="input-article"
+                                class={styles.input_article}
                                 />
                             </div>
                         </div>
-                    <div class="flex mt-3">
+                    <div class="flex mt-1">
                         <div class="form-group">
                             <label htmlFor="last1" class="article">
                                 Điểm đạt
@@ -103,7 +103,7 @@ function Change() {
                                 defaultValue={thamso.diemdat}
                                 type="text"
                                 name='diemdat'
-                                class="input-article"
+                                class={styles.input_article}
                                 style={{ width: "90%" }}
                             />
                         </div>
@@ -116,12 +116,12 @@ function Change() {
                                 defaultValue={thamso.diemdatmon}
                                 type="text"
                                 name='diemdatmon'
-                                class="input-article"
+                                class={styles.input_article}
                                 style={{ width: "90%" }}
                             />
                         </div>
                     </div>
-                    <div class="flex mt-3">
+                    <div class="flex mt-1">
                         <div class="form-group">
                             <label htmlFor="last1" class="article">
                                 Điểm tối thiểu
@@ -131,7 +131,7 @@ function Change() {
                                 defaultValue={thamso.diemtoithieu}
                                 type="text"
                                 name='diemtoithieu'
-                                class="input-article"
+                                class={styles.input_article}
                                 style={{ width: "90%" }}
                             />
                         </div>
@@ -144,7 +144,7 @@ function Change() {
                                 defaultValue={thamso.diemtoida}
                                 type="text"
                                 name='diemtoida'
-                                class="input-article"
+                                class={styles.input_article}
                                 style={{ width: "90%" }}
                             />
                         </div>

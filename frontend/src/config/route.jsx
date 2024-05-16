@@ -1,10 +1,14 @@
 const routes = {
     start: '/',
     login: '/login',
-    studentprofile: '/profile',
-    studentattendance: '/attendance',
-    semestersumary: '/semestersumary',
-    change: 'change'
+    themhocsinh: '/themhocsinh',
+    xeplop: '/xeplop',
+    bangdiem: '/bangdiem',
+    tongketmon: '/tongketmon',
+    tongkethocki:'/tongekethocki',
+    change: '/change',
+    tracuu: '/tracuu',
+    home:'/'
 };
     
 export default routes;

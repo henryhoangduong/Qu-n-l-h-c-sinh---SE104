@@ -1,22 +1,3 @@
-body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-  
-  html {
-    height: -webkit-fill-available;
-  }
-  
-  main {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  
   .b-example-divider {
     flex-shrink: 0;
     width: 1.5rem;
@@ -81,32 +62,24 @@ body {
     background-color: #d2f4ea;
   }
   
-  .scrollarea {
-    overflow-y: auto;
-  }
-  
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
   
   .sidebar{
     display: flex;
     flex-direction: column;
-    width: auto;
-    height: 90vh;
-    justify-content: center;
-    margin-top: -50px;
+    border: solid 3px black;
 }
 
 .sidebar__icon {
     font-size: 22px;
     color: black;
     padding: 5px;
-    width: 40px;
+
     border-radius: 5px;
   }
 
 .sidebar__title{
-    margin-left: 20px;
     font-size: 18px;
     font-weight:500;
     color: black;
@@ -118,10 +91,10 @@ body {
   
 .sidebar-item{
     display: flex;
-    margin-left: 30px;
-    width: 350px;
-    padding: 20px;
-    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    border: black solid 3px;
+    width: 100rem;
 }
 
 .sidebar-item:hover{
