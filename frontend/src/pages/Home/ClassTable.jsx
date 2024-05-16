@@ -17,22 +17,43 @@ function ClassTable() {
     })
     return (
         
-<div class="m-6 w-max relative overflow-x-auto">
-    <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
+        <div class="m-6 w-max  rounded-lg overflow-hidden" style={{ border: 'black solid 3px' }}>
+    <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">                
+        <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#BA9CE8'}}>
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                    Mã lớp
+                        </th> 
+                        <th scope="col" class="px-6 py-3">
                     Lớp
-                </th>
+                        </th>
+
+                                <th scope="col" class="px-6 py-3">
+                            Sỉ số
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Khối
+                        </th>
+                        
             </tr>
         </thead>
                 <tbody>
                     {Class.map((item) => (
-  <tr key={item.malop} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr key={item.malop} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      {item.malop}
+                            </th>                       
     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
       {item.tenlop}
-    </th>
-  </tr>
+                            </th>
+       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      {item.siso}
+                            </th>
+       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      {item.khoi}
+                            </th>
+    </tr>
+                        
 ))}
     
         </tbody>
