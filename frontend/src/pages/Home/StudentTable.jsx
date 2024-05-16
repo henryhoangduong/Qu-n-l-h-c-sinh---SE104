@@ -7,7 +7,7 @@ function StudentTable() {
         const fetchData = async () => {
             try {
             const response = await axios.get('http://localhost:3001/students')
-                setStudent(response.data)
+              setStudent(response.data.slice(0,5))
                 console.log('response: ',response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
@@ -18,21 +18,21 @@ function StudentTable() {
     return (
         
 
-<div class="m-6 w-max relative overflow-x-auto">
-  <div class="overflow-auto max-h-96">
-    <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0 z-10">
+<div class="mt-6 relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px',width:'1020px'}}>
+  <div class="overflow-x-hidden max-h-96">
+    <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{width:'1020px'}}>
+      <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#BA9CE8'}}>
         <tr>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-700">
+          <th scope="col" class="px-6 py-3 ">
             Họ và tên
           </th>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-700">
+          <th scope="col" class="px-6 py-3 ">
             Giới tính
           </th>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-700">
+          <th scope="col" class="px-6 py-3 ">
             Ngày sinh
           </th>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-700">
+          <th scope="col" class="px-6 py-3 ">
             Địa chỉ
           </th>
         </tr>
