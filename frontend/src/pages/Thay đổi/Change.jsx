@@ -3,6 +3,8 @@ import axios from "axios"
 import styles from  './Change.module.css'
 import { useState } from "react"
 
+const url = process.env.REACT_APP_API_URL
+
 function Change() {
 
     const [thamso, setThamso] = useState({
@@ -20,7 +22,7 @@ function Change() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/thamso')
+                const response = await axios.get(`${url}/thamso`)
                 console.log('datafetch')
                 setThamso(response.data[0])
             } catch (error) {
@@ -32,7 +34,7 @@ function Change() {
     const handleSave = async () => {
 
         try {
-            const response = await axios.post('http://localhost:3001/thamso', thamso)
+            const response = await axios.post(`${url}/thamso`, thamso)
             console.log('saving')
             console.log(response.data)
         } catch (error) {

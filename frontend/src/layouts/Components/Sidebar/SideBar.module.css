@@ -32,7 +32,7 @@
   .btn-toggle:hover,
   .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
-    background-color: #d2f4ea;
+    background-color: #F0B37C;
   }
   
   .btn-toggle::before {
@@ -59,7 +59,7 @@
   }
   .btn-toggle-nav a:hover,
   .btn-toggle-nav a:focus {
-    background-color: #d2f4ea;
+    background-color: #F0B37C;
   }
   
   .fw-semibold { font-weight: 600; }
@@ -75,7 +75,6 @@
     font-size: 22px;
     color: black;
     padding: 5px;
-
     border-radius: 5px;
   }
 
@@ -89,20 +88,22 @@
     text-decoration: none;
   }
   
-.sidebar-item{
+.sidebar_item{
     display: flex;
     margin-bottom: 10px;
     margin-right: 20px;
     border: black solid 3px;
     width: 100rem;
+    height: 60px;;
+    border-radius: 10px;
 }
 
-.sidebar-item:hover{
-    background-color: rgb(230, 234, 234);
+.sidebar_item:hover{
+    background-color: #F0B37C;
     cursor: pointer;
 }
 
 
-.sidebar-item.active {
-    background-color: #f0f0f0;
+.sidebar_item.active {
+    background-color: #F0B37C;
 }
