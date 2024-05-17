@@ -15,7 +15,6 @@ export class ThamsoService {
     return this.thamsoRepository.find();
   }
   async change(thamso: ThamsoDto): Promise<void> {
-    console.log('tham so: ', thamso);
     const options: FindOneOptions<Thamso> = {
       where: {
         mathamso: '5fa3f6c4-bb4a-4927-b8a2-f393f9d1651b',
