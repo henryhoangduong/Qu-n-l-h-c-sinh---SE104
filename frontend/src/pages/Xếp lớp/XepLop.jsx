@@ -31,11 +31,16 @@ function XepLop() {
     const handleClickClass= (classId)=> {
         setClassChoose({'classid':classId})
     }
-    const handleSave = (Class,studentList) => {
-            const studentListId = studentList.map((item) => item.mahocsinh);
+    const handleSave =  async (Class,studentList) => {
+        const studentListId = studentList.map((item) => item.mahocsinh);
         console.log(studentListId);
         const postData = {'classid':Class.classid, 'studentlist': studentListId }
-        console.log('postData: ',postData)
+        try {
+             const response = await axios.post(`${url}/chitietdslop`)
+            console.log('postData: ',postData)
+        } catch (error) {
+            console.log('Error calling chitietdslop: ',error)
+        }
     }
     return (
         <div className="flex flex-col ">
