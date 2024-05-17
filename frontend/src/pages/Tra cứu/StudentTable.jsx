@@ -3,14 +3,17 @@ import axios from 'axios'
 
 const url = process.env.REACT_APP_API_URL
 
-function StudentTable() {
-    const [student, setStudent] = useState([])
-    useEffect(() => {
+function StudentTable({data}) {
+    const [student, setStudent] = useState(data)
+  useEffect(() => {
+      setStudent(data)
+  }, [data])
+  
+      useEffect(() => {
         const fetchData = async () => {
             try {
             const response = await axios.get(`${url}/students`)
-              setStudent(response.data.slice(0,5))
-                console.log('response: ',response.data)
+              setStudent(response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
             }
@@ -18,12 +21,10 @@ function StudentTable() {
         fetchData()
     },[])
     return (
-        
-
 <div class="mt-6 relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px',width:'1020px'}}>
-  <div class="overflow-x-hidden max-h-96">
+  <div class="overflow-x-hidden ">
     <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{width:'1020px'}}>
-      <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>
+      <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#BA9CE8',borderBottom:'black solid 3px'}}>
         <tr>
           <th scope="col" class="px-6 py-3 ">
             Họ và tên
