@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 
+const url = process.env.REACT_APP_API_URL
+
 function ClassTable() {
     const [Class, setClass] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await axios.get('http://localhost:3001/class')
+            const response = await axios.get(`${url}/class`)
                 setClass(response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
@@ -14,12 +16,12 @@ function ClassTable() {
             
         }
         fetchData()
-    })
+    },[])
     return (
         
         <div class="m-6 w-max  rounded-lg overflow-hidden" style={{ border: 'black solid 3px' }}>
     <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">                
-        <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#BA9CE8'}}>
+        <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>
                     <tr>
                         <th scope="col" class="px-6 py-3">
                     Mã lớp
