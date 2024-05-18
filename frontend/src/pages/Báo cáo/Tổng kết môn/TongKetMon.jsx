@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./TongKetMon.css";
 import axios from "axios";
 
+const url = process.env.REACT_APP_API_URL
+
+
 function TongKetHocKi() {
   const [classes, setClasses] = useState([]);
   const [semester, setSemester] = useState(null); // Initial state is null, meaning no semester is selected
 
   useEffect(() => {
     if (semester !== null) {
-      axios.get(`http://localhost:3001/baocao/mon`)
+      axios.get(`${url}/baocao/mon`)
         .then(response => {
           setClasses(response.data);
         })

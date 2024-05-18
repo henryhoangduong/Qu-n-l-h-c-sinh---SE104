@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./TongKetHocKi.css";
 import axios from "axios";
 
+const url = process.env.REACT_APP_API_URL
+
+
 function TongKetHocKi() {
   const [classes, setClasses] = useState([]);
   const [semester, setSemester] = useState(null); // Initial state is null, meaning no semester is selected
 
   useEffect(() => {
     if (semester !== null) {
-      axios.get(`http://localhost:3001/baocao/hocki`)
+      axios.get(`${url}/baocao/hocki`)
         .then(response => {
           setClasses(response.data);
         })
@@ -25,9 +28,9 @@ function TongKetHocKi() {
   return (
     <>
       <div className="Title">BÁO CÁO TỔNG KẾT HỌC KÌ</div>
-      <div className="Sum">
+      <div className="Sum" >
         Học kì: 
-        <select value={semester || ""} onChange={handleSemesterChange}>
+        <select style={{ border: "black solid 3px"}} value={semester || ""} onChange={handleSemesterChange}>
           <option value="" disabled>Chọn học kì</option>
           <option value="1">Học kì 1</option>
           <option value="2">Học kì 2</option>
