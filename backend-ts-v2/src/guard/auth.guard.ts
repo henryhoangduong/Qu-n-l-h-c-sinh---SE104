@@ -15,7 +15,7 @@ export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private reflector: Reflector) { }
+  constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
@@ -23,11 +23,11 @@ export class AuthGuard implements CanActivate {
       context.getClass(),
     ]);
     if (isPublic) return true;
-    
+
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) throw new UnauthorizedException();
-    
+
     try {
       verifyToken(token);
       const jwtPayload = decode(token) as JwtPayload;
