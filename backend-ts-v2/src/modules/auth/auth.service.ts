@@ -12,7 +12,9 @@ export class AuthService {
     private studentService: StudentService,
   ) {}
 
-  async login(loginReqDto: LoginReqDto): Promise<{ access_token: string }> {
+  async login(
+    loginReqDto: LoginReqDto,
+  ): Promise<{ access_token: string; user: string }> {
     if (
       loginReqDto.username.toLowerCase() == 'admin' &&
       loginReqDto.password == '12345678'
@@ -24,6 +26,7 @@ export class AuthService {
       };
       return {
         access_token: await this.jwtService.signAsync(payload),
+        user:'admin'
       };
     } else {
       throw new UnauthorizedException();
