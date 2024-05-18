@@ -1,22 +1,16 @@
 import config from "../config";
-import Login from "../pages/Login";
 import DefaultLayout from "../layouts/DefaultLayout";
-import LoginRegisterLayout from "../layouts/LoginRegisterLayout";
-import StudentProfile from '../pages/Student/Profile';
-import StudentAttendance from "../pages/Student/Attendance";
-import SemesterSumary from "../pages/Teacher/SemesterSumary";
 import Home from "../pages/Home";
 import Change from '../pages/Thay đổi'
 import BangDiem from "../pages/Bảng điểm/BangDiem";
 import TongKetHocKi from "../pages/Báo cáo/Tổng kết học kì/TongKetHocKi";
 import TongKetMon from "../pages/Báo cáo/Tổng kết môn/TongKetMon";
-import { layer } from "@fortawesome/fontawesome-svg-core";
 import TraCuu from "../pages/Tra cứu/TraCuu";
 import XepLop from "../pages/Xếp lớp/XepLop";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../hooks/AuthProvider";
 
-const PublicRoutes = [
-    // { path: config.routes.login, component: Login, layout: LoginRegisterLayout },
-    // { path: config.routes.studentprofile, component: StudentProfile, layout: DefaultLayout },
+const routes = [
     { path: config.routes.themhocsinh, component:Home , layout: DefaultLayout },
     { path: config.routes.bangdiem, component: BangDiem, layout: DefaultLayout },
     { path: config.routes.tongkethocki, component: TongKetHocKi, layout: DefaultLayout },
@@ -27,4 +21,11 @@ const PublicRoutes = [
     { path: config.routes.xeplop, component: XepLop, layout: DefaultLayout },
 ];
 
-export { PublicRoutes };
+const PrivateRoutes = () => {
+    const user = useAuth();
+    console.log('user token: ',user.token)
+    if (!user.token) return <Navigate to="/login" />;
+    return <Outlet />;
+}
+
+export { routes,PrivateRoutes };

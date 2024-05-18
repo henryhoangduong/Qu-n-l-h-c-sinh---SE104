@@ -3,8 +3,10 @@ import styles from './SideBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation } from 'react-router-dom';
 import config from '../../../config';
+import { useAuth } from '../../../hooks/AuthProvider';
 
 function SideBarStudent() {
+  const auth = useAuth();
   const sidebarItem = [
     {
       icon: <FontAwesomeIcon icon={faHouse} className={styles.sidebar__icon} />,
@@ -61,7 +63,7 @@ function SideBarStudent() {
       ))}
         
       </div>
-      <button className='btn border-2 border-black w-20 rounded-lg' style={{bottom: '10px', position:'relative',backgroundColor:'#EB7979'}}> Sign Out</button>
+      <button onClick={() => { auth.logOut() }} className='btn border-2 border-black w-20 rounded-lg' style={{bottom: '10px', position:'relative',backgroundColor:'#EB7979'}}> Sign Out</button>
     </div>
     
   );

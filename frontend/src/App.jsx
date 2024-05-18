@@ -1,15 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./index.css";
-import { PublicRoutes } from "./routes";
+import { routes } from "./routes";
+import AuthProvider from "./hooks/AuthProvider";
+import { PrivateRoutes } from "./routes";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <>
       <Router>
+        <AuthProvider>
         <div>
-          <Routes>
-            {PublicRoutes.map((route, index) => {
+            <Routes>
+              <Route path="/login" element={<Login />} />
+            <Route element={<PrivateRoutes />}>
+              {routes.map((route, index) => {
               const Page = route.component;
               let Layout = route.layout;
               return (
@@ -19,8 +25,11 @@ function App() {
               )
             }
             )}
+            </Route>
           </Routes>
         </div>
+        </AuthProvider>
+
       </Router>
     </>
   );
