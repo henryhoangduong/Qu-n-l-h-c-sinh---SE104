@@ -8,8 +8,10 @@ function ClassTable() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await axios.get(`${url}/class`)
+                const response = await axios.get(`${url}/class`)
+                
                 setClass(response.data)
+                
             } catch (error) {
                console.log("Error fetching data: ",error) 
             }

@@ -8,8 +8,10 @@ function StudentTable() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await axios.get(`${url}/students`)
-              setStudent(response.data.slice(0,5))
+              const response = await axios.get(`${url}/students`)
+              
+              setStudent(response.data.slice(0, 5))
+              
                 console.log('response: ',response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 

@@ -8,7 +8,8 @@ function SubjectTable() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await axios.get(`${url}/monhoc`)
+                const response = await axios.get(`${url}/monhoc`)
+                
                 setSubject(response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
