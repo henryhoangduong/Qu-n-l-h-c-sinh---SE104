@@ -4,6 +4,7 @@ import { LoginReqDto } from 'src/data-object/login-req.dto';
 import { Hocsinh } from 'src/entities';
 import { Public } from 'src/decorator/publicRoute';
 
+@Public()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

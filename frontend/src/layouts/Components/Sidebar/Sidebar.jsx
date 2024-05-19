@@ -1,4 +1,4 @@
-import { faCalendarCheck, faSchool, faHouse, faRightFromBracket, faSquarePollVertical, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faSchool, faHouse, faRightFromBracket, faSquarePollVertical, faUser, faPen } from '@fortawesome/free-solid-svg-icons';
 import styles from './SideBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation } from 'react-router-dom';
@@ -29,6 +29,11 @@ function SideBarStudent() {
       to: config.routes.tracuu
     },
     {
+      icon: <FontAwesomeIcon icon={faPen} className={styles.sidebar__icon} />,
+      title: 'Nhập điểm',
+      to: config.routes.nhapdiem,
+    },
+    {
       icon: <FontAwesomeIcon icon={faSquarePollVertical} className={styles.sidebar__icon} />,
       title: 'Tổng kết môn',
       to: config.routes.tongketmon
@@ -48,24 +53,24 @@ function SideBarStudent() {
   const location = useLocation();
 
   return (
-    <div className={`${ styles.sidebar } items-center flex flex-col justify-between`} style={{ height: '100vh', padding: 0}}>
-      <a href='/' className=' mb-2 text-3xl font-semibold tracking-tight text-gray-900' style={{top:'10px' , position:'relative'}}> Group 23</a>
-     <div className='flex flex-none flex-col  justify-between'  >
-      {sidebarItem.map((item, index) => (
-        <div key={index}>
-          <Link to={item.to} className='no-decoration'>
-            <div style={{width:'17rem',marginLeft:'20px',marginRight:'20px'}} className={`${styles.sidebar_item} flex items-center  mx-0 ${location.pathname === item.to ? styles.active : ''}`}>
-              {item.icon}
-              <div className='flex flex-none justify-center  items-center'><p className='sidebar__title'>{item.title}</p></div>
-            </div>
-          </Link>
-        </div>
-      ))}
-        
+    <div className={`${styles.sidebar} items-center flex flex-col justify-between`} style={{ height: '100vh', padding: 0 }}>
+      <a href='/' className=' mb-2 text-3xl font-semibold tracking-tight text-gray-900' style={{ top: '10px', position: 'relative' }}> Group 23</a>
+      <div className='flex flex-none flex-col  justify-between'  >
+        {sidebarItem.map((item, index) => (
+          <div key={index}>
+            <Link to={item.to} className='no-decoration'>
+              <div style={{ width: '17rem', marginLeft: '20px', marginRight: '20px' }} className={`${styles.sidebar_item} flex items-center  mx-0 ${location.pathname === item.to ? styles.active : ''}`}>
+                {item.icon}
+                <div className='flex flex-none justify-center  items-center'><p className='sidebar__title'>{item.title}</p></div>
+              </div>
+            </Link>
+          </div>
+        ))}
+
       </div>
-      <button onClick={() => { auth.logOut() }} className='btn border-2 border-black w-20 rounded-lg' style={{bottom: '10px', position:'relative',backgroundColor:'#EB7979'}}> Sign Out</button>
+      <button onClick={() => { auth.logOut() }} className='btn border-2 border-black w-20 rounded-lg' style={{ bottom: '10px', position: 'relative', backgroundColor: '#EB7979' }}> Sign Out</button>
     </div>
-    
+
   );
 }
 
