@@ -5,6 +5,7 @@ import StudentTable from "./StudentTable";
 import Card from "../../layouts/Components/Card";
 import axios from "axios";
 import ThamSoTable from "./ThamSoTable";
+import ThemHocSinh from "./ThemHocSinh";
 
 const url = process.env.REACT_APP_API_URL
 
@@ -57,8 +58,9 @@ function Login() {
                 <ClassTable />
                 <SubjectTable />
                 <ThamSoTable data={ thamSo} />
+                {/* <ThemHocSinh /> */}
             </div>
-            
+            <ThemHocSinh />
         </div>
     )
 }
