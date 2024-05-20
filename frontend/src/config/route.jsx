@@ -8,6 +8,7 @@ const routes = {
     tongkethocki:'/tongekethocki',
     change: '/change',
     tracuu: '/tracuu',
+    nhapdiem: '/nhapdiem',
     home:'/'
 };
     
