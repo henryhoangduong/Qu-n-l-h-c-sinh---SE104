@@ -4,9 +4,9 @@ import Header from '../Components/Header/Header';
 
 function DefaultLayout({children}) {
     return (  
-        <div className="w-max container flex flex-row">
+        <div className=" flex flex-row">
             <Sidebar />
-            <div className='overflow-y-scroll w-screen px-10' style={{ width: '83rem' }}>
+            <div className='overflow-scroll px-10' style={{height : "100vh",  width : "100%"}} >
             <Header/>
                 {children}
             </div> 
