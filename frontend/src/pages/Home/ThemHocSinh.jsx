@@ -144,7 +144,7 @@ function ThemHocSinh() {
 
                         </div>
                         <div style={{ width: "90%" }}>
-                            <button type="submit" className="button button--light" onClick={handleSubmit}>
+                            <button type="submit" className="button button--light mb-1" onClick={handleSubmit}>
                                 Thêm học sinh
                             </button>
                         </div>
