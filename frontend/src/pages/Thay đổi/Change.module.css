@@ -1,0 +1,32 @@
+.form_area{
+    border: black solid 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 10px 10px 2px #010002;
+}
+
+.form_group{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin: 20px;
+}
+
+.input_article{
+    outline: none;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0px 1px #000;
+    width: 290px;
+    padding: 12px 10px;
+    font-size: 15px;
+}
+
+.btn{
+box-shadow: 3px 4px 0px 1px #000;
+}
