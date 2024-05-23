@@ -51,7 +51,7 @@ function XepLop() {
             <StudentTable data={studentListChoose} />
             <div onClick={() => {
                 handleSave(ClassChoose,studentListChoose)
-            }} className="w-12 right-0" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
+            }} className="w-12 right-0" style={{border: 'black solid 3px', padding:'5px 40px',backgroundColor:'#81C3CF',cursor:'pointer',marginTop:'50px',borderRadius:'6px',textIndent:'-0.25cm'}} >Lưu</div>
         </div>
     )
 }

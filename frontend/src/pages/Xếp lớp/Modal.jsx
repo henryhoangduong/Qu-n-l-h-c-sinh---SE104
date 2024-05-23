@@ -21,7 +21,7 @@ export default function ChonHocSinhModal({handleClick}) {
     },[])
   return (
     <>
-      <div style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} onClick={() => setOpenModal(true)}>Danh sách</div>
+      <div style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#81C3CF',cursor:'pointer',borderRadius:'8px'}} onClick={() => setOpenModal(true)}>Danh sách</div>
         <Modal  show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Danh sách học sinh</Modal.Header>
         <Modal.Body >

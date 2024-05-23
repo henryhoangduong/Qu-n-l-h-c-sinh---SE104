@@ -45,7 +45,7 @@ function TongKetHocKi() {
           <div>Vui lòng chọn học kì để xem báo cáo.</div>
         ) : (
           <table className="table" style={{width:"100%" , border: 'black solid 3px' ,}}>
-            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#BA9CE8',borderBottom:'black solid 3px'}}>
+            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
               <tr>
                 <th>No</th>
                 <th scope="col" className="px-14 py-3">Lớp</th>

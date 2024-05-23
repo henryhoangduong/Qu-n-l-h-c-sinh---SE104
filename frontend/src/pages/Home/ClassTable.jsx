@@ -21,7 +21,7 @@ function ClassTable() {
         
         <div class="m-6 w-max  rounded-lg overflow-hidden" style={{ border: 'black solid 3px' }}>
     <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">                
-        <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>
+        <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
                     <tr>
                         <th scope="col" class="px-6 py-3">
                     Mã lớp
