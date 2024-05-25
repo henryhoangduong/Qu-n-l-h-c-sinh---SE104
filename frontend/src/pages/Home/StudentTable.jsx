@@ -20,7 +20,7 @@ function StudentTable() {
     return (
         
 
-<div class="mt-6 relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px',width:'1020px'}}>
+<div class="mt-6 h-max relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px',width:'1020px'}}>
   <div class="overflow-x-hidden max-h-96">
     <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{width:'1020px'}}>
       <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>

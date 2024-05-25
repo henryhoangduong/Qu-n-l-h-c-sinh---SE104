@@ -13,7 +13,7 @@ function SideBarStudent() {
     },
     {
       icon: <FontAwesomeIcon icon={faUser} className='sidebar__icon' />,
-      title: 'Profile Settings',
+      title: 'Student Management',
       to: config.routes.studentprofile
     },
     {

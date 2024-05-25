@@ -19,7 +19,7 @@ function SubjectTable() {
     },[])
     return (
         
-<div class="m-6 w-max relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
+<div class="m-6 h-max w-max relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
     <table class="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>
             <tr>
