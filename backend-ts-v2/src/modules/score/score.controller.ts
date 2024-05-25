@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
 import { ScoreService } from './score.service';
 import { ScoreInputDto } from 'src/data-object/score-input.dto';
@@ -10,5 +10,10 @@ export class ScoreController {
   @Post('/')
   async createScore(@Body() scoreInputDto: ScoreInputDto) {
     return this.scoreService.createScore(scoreInputDto);
+  }
+
+  @Get('/')
+  async getScore() {
+    return this.scoreService.getAllScore();
   }
 }
