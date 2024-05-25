@@ -10,9 +10,9 @@ import XepLop from "../pages/Xếp lớp/XepLop";
 import NhapDiem from "../pages/Nhập điểm/NhapDiem";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/AuthProvider";
-
+import ThemHocSinh from "../pages/Thêm học sinh/ThemHocSinh";
 const routes = [
-    { path: config.routes.themhocsinh, component: Home, layout: DefaultLayout },
+    { path: config.routes.themhocsinh, component: ThemHocSinh, layout: DefaultLayout },
     { path: config.routes.bangdiem, component: BangDiem, layout: DefaultLayout },
     { path: config.routes.tongkethocki, component: TongKetHocKi, layout: DefaultLayout },
     { path: config.routes.tongketmon, component: TongKetMon, layout: DefaultLayout },

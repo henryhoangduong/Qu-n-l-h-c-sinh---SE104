@@ -60,7 +60,6 @@ function Login() {
                 <ThamSoTable data={ thamSo} />
                 {/* <ThemHocSinh /> */}
             </div>
-            <ThemHocSinh />
         </div>
     )
 }
