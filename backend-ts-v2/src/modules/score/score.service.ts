@@ -19,4 +19,9 @@ export class ScoreService {
     const newScore = await this.scoreRepository.save(score);
     return new BaseResponse(HttpStatus.CREATED, true, newScore, undefined);
   }
+
+  async getAllScore(): Promise<BaseResponse<Chitietdiemloaihinhkiemtra[]>> {
+    const scores = await this.scoreRepository.find();
+    return new BaseResponse(HttpStatus.OK, true, scores, undefined);
+  }
 }
