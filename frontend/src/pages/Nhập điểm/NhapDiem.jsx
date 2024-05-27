@@ -51,10 +51,14 @@ function Modal({ mahs, closeModal, handleMahsChange }) {
                         <select id="mon" onChange={(e) => setMabangdiemmon(e.target.value)} class="bg-gray-50 border border-gray-300 mt-1 ml-0 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Chọn môn</option>
                             <option value="1">Toán</option>
-                            <option value="2">Văn</option>
-                            <option value="3">Sử</option>
-                            <option value="4">Địa</option>
-                            <option value="5">Hóa</option>
+                            <option value="2">Vật lý</option>
+                            <option value="3">Hóa học</option>
+                            <option value="4">Sinh học</option>
+                            <option value="5">Lịch sử</option>
+                            <option value="6">Địa lý</option>
+                            <option value="7">Văn học</option>
+                            <option value="8">Đạo đức</option>
+                            <option value="9">Thể dục</option>
                         </select>
                     </div>
                     <div className="mb-4">
@@ -126,7 +130,7 @@ function StudentTable() {
 
     return (
         <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '1020px' }}>
-            <div class="overflow-x-hidden ">
+            <div class="overflow-x-hidden overflow-y-auto">
                 <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{ width: '1020px' }}>
                     <thead class="text-xs text-black uppercase  " style={{ backgroundColor: '#BA9CE8', borderBottom: 'black solid 3px' }}>
                         <tr>
