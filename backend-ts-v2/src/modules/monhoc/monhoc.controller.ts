@@ -17,7 +17,7 @@ export class MonhocController {
   }
   @Put('/:id')
   async change(
-    @Body() { tenmonhoc }: { tenmonhoc: string },
+    @Body() { tenmonhoc, heso }: { tenmonhoc?: string; heso?: number },
     @Param('id') id,
     @Res()
     res: Response,
@@ -29,6 +29,7 @@ export class MonhocController {
       return res.status(409).json({ message: "monhoc doesn't exists" });
     } else {
       monhoc.tenmonhoc = tenmonhoc;
+      monhoc.heso = heso;
     }
     const monhocChanged = await this.monhocService.update(monhoc);
     return res.status(200).json({ monhocChanged });
