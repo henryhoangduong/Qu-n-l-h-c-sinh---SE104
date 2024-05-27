@@ -8,7 +8,7 @@ const url = process.env.REACT_APP_API_URL
 function TongKetHocKi() {
   const [classes, setClasses] = useState([]);
   const [semester, setSemester] = useState(null); // Initial state is null, meaning no semester is selected
-
+  const [monhoc, setMonhoc] =useState([])
   useEffect(() => {
     if (semester !== null) {
       axios.get(`${url}/baocao/mon`)
@@ -20,6 +20,18 @@ function TongKetHocKi() {
         });
     }
   }, [semester]);
+  useEffect(() => {
+    const fetchData = async () => {
+            try {
+                const response = await axios.get(`${url}/monhoc`);
+              setMonhoc(response.data);
+              console.log('monhoc: ',monhoc);
+            } catch (error) {
+                console.log("Error fetching data: ", error);
+            }
+        };
+        fetchData();
+  },[])
 
   const handleSemesterChange = (event) => {
     setSemester(event.target.value);
@@ -32,11 +44,9 @@ function TongKetHocKi() {
         Môn: 
         <select value={semester || ""} onChange={handleSemesterChange}>
           <option value="" disabled>Chọn môn</option>
-          <option value="1">Toán</option>
-          <option value="2">Văn</option>
-          <option value="2">Sử</option>
-          <option value="2">Địa</option>
-          <option value="2">Hóa</option>
+          {monhoc.map((item) => (
+              <option value={item.mamonhoc} key={item.mamonhoc}>{item.tenmonhoc.slice(0,1).toUpperCase()+item.tenmonhoc.slice(1)}</option>
+          ))}
           {/* Add more options if there are more semesters */}
         </select>
       </div>
