@@ -49,7 +49,7 @@ function XepLop() {
                 <ChonHocSinhModal handleClick={handleClickStudent} />
             </div>
             <StudentTable data={studentListChoose} />
-            {studentListChoose.length !== 0 &&
+            {studentListChoose.length !== 0 && 
                 <div className="flex flex-row justify-end items-end">
                 <div
                    onClick={() => {
