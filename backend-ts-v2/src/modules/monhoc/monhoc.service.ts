@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,NotFoundException  } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Monhoc } from 'src/entities';
@@ -28,5 +28,12 @@ export class MonhocService {
     };
     const newMonhoc = this.monhocRepository.create(Monhoc);
     return this.monhocRepository.save(newMonhoc);
+  }
+  async delete(mamonhoc: number): Promise<void> {
+    const monhoc = await this.monhocRepository.findOne({ where: { mamonhoc } });
+    if (!monhoc) {
+      throw new NotFoundException(`Monhoc with mamonhoc ${mamonhoc} not found`);
+    }
+    await this.monhocRepository.remove(monhoc);
   }
 }

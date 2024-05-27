@@ -1,4 +1,13 @@
-import { Controller, Post, Body, Res, Param, Put, Get } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Res,
+  Param,
+  Put,
+  Get,
+  Delete,
+} from '@nestjs/common';
 import { MonhocService } from './monhoc.service';
 import { MonhocDto } from 'src/data-object/monhoc.dto';
 import { Response } from 'express';
@@ -47,5 +56,9 @@ export class MonhocController {
     }
     const data = await this.monhocService.create(monhocDto);
     return res.status(200).json(data);
+  }
+  @Delete('/:id')
+  async delete(@Param('id') mamonhoc: number): Promise<void> {
+    return await this.monhocService.delete(mamonhoc);
   }
 }

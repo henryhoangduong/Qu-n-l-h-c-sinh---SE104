@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ChinhSuaClass from './ChinhSuaClass';
 import ThemLop from './ThemLop';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -21,7 +23,7 @@ function ClassTable() {
     }, []);
 
     return (
-        <div className="m-6 h-max w-max rounded-lg overflow-hidden" style={{ border: 'black solid 3px' }}>
+        <div className="m-6 h-max w-max rounded-lg overflow-x-auto" style={{ border: 'black solid 3px' }}>
             <table className="w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-black uppercase" style={{ backgroundColor: '#B2CCFE', borderBottom: 'black solid 3px' }}>
                     <tr>
@@ -29,6 +31,7 @@ function ClassTable() {
                         <th scope="col" className="px-6 py-3">Lớp</th>
                         <th scope="col" className="px-6 py-3">Sỉ số</th>
                         <th scope="col" className="px-6 py-3">Khối</th>
+                        <th scope="col" className="px-6 py-3">Xóa</th>
                         <th scope="col" className="px-6 py-3">Chỉnh sửa</th>
                         <th scope="col" className="px-6 py-3"><ThemLop/></th>
                     </tr>
@@ -47,6 +50,9 @@ function ClassTable() {
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {item.tenlop.slice(0, 2)}
+                            </th>
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <FontAwesomeIcon icon={faTrash} />
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <ChinhSuaClass id={item.malop} />
