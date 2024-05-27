@@ -49,9 +49,15 @@ function XepLop() {
                 <ChonHocSinhModal handleClick={handleClickStudent} />
             </div>
             <StudentTable data={studentListChoose} />
-            <div onClick={() => {
+            {studentListChoose.length !== 0 &&
+                <div className="flex flex-row justify-end items-end">
+                <div
+                   onClick={() => {
                 handleSave(ClassChoose,studentListChoose)
-            }} className="w-12 right-0" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
+            }} className="w-12" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
+                </div>
+                }
+            
         </div>
     )
 }
