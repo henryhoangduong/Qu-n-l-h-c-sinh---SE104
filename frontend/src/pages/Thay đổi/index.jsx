@@ -15,8 +15,8 @@ function Change() {
                 <ClassTable />
                 <SubjectTable/>
             </div>
-            <SuccessAlert isopen={success}/>
-            <FailAlert isopen={fail}/>
+            <SuccessAlert isopen={success} message='Thay đổi thành công'/>
+            <FailAlert isopen={fail} message="Thay đổi không thành công"/>
         </div>
     )
 }
