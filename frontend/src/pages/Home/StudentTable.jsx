@@ -4,19 +4,29 @@ import axios from 'axios'
 const url = process.env.REACT_APP_API_URL
 
 function StudentTable() {
+  
     const [student, setStudent] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             try {
             const response = await axios.get(`${url}/students`)
-              setStudent(response.data.slice(0,5))
+              setStudent(response.data.slice(0, 5))
+              console.log(typeof response.data[0].ngaysinh)
                 console.log('response: ',response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
             }
         }
         fetchData()
-    },[])
+    }, [])
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = String(date.getUTCFullYear());
+        return `${day}/${month}/${year}`;
+    };
+
     return (
         
 
@@ -49,7 +59,7 @@ function StudentTable() {
               Nam
             </td>
             <td className="px-6 py-4">
-              {item.ngaysinh}
+              {formatDate(item.ngaysinh)}
             </td>
             <td className="px-6 py-4">
               {item.diachi}
