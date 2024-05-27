@@ -1,35 +1,33 @@
 import { Controller, Get } from '@nestjs/common';
+import { ClassService } from '../class/class.service';
 
 @Controller('baocao')
 export class BaocaoController {
+  constructor(private readonly classService: ClassService) {}
   @Get('mon')
-  mon(): any {
-    const arr = [
-      { lop: '10A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A2', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A3', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A4', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A2', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A3', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '12A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '12A2', siso: 40, sld: 20, tile: 0.5 },
-    ];
+  async mon(): Promise<any> {
+    const classes = await this.classService.findAll();
+    const arr = [];
+    for (let i = 0; i < classes.length; i++) {
+      const currentClass = classes[i];
+      const siso = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+      const sld = Math.floor(Math.random() * (30 - 20 + 1)) + 20;
+      const tile = Math.round((sld / siso) * 10) / 10;
+      arr.push({ lop: currentClass.tenlop, siso: siso, sld: sld, tile: tile });
+    }
     return arr;
   }
   @Get('hocki')
-  hocki(): any {
-    const arr = [
-      { lop: '10A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A2', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A3', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '10A4', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A2', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '11A3', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '12A1', siso: 40, sld: 20, tile: 0.5 },
-      { lop: '12A2', siso: 40, sld: 20, tile: 0.5 },
-    ];
+  async hocki(): Promise<any> {
+    const classes = await this.classService.findAll();
+    const arr = [];
+    for (let i = 0; i < classes.length; i++) {
+      const currentClass = classes[i];
+      const siso = Math.floor(Math.random() * (40 - 30 + 1)) + 30;
+      const sld = Math.floor(Math.random() * (30 - 20 + 1)) + 20;
+      const tile = Math.round((sld / siso) * 10) / 10;
+      arr.push({ lop: currentClass.tenlop, siso: siso, sld: sld, tile: tile });
+    }
     return arr;
   }
 }
