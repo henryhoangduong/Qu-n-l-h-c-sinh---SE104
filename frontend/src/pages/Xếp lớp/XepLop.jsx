@@ -4,13 +4,17 @@ import StudentTable from "./StudentTable";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ChonHocSinhModal from "./Modal";
+import { SuccessAlert } from "../../layouts/Components/Alert/Success"
+import { FailAlert } from "../../layouts/Components/Alert/Fail"
 
 const url = process.env.REACT_APP_API_URL
 
 function XepLop() {
     const [Class, setClass] = useState([]);
     const [studentListChoose, setstudentListChoose] = useState([])
-    const [ClassChoose, setClassChoose]=useState({'classid':''})
+    const [ClassChoose, setClassChoose] = useState({ 'classid': '' })
+    const [success, seSuccess] = useState(false)
+    const [fail,setFail] = useState(false)
     const [classStudent,setclassStudent]=useState({'classid':'','studentlists':[]})
         useEffect(() => {
         const fetchData = async () => {
@@ -34,8 +38,17 @@ function XepLop() {
         const studentListId = studentList.map((item) => item.mahocsinh);
         const postData = {'classid':Class.classid, 'studentlists': studentListId }
         try {
-             const response = await axios.post(`${url}/chitietdslop`,postData)
+            const response = await axios.post(`${url}/chitietdslop`, postData)
+            seSuccess(true);
+                setTimeout(() => {
+                    seSuccess(false);
+                }, 5000);
+            
         } catch (error) {
+            setFail(true);
+                setTimeout(() => {
+                    setFail(false);
+                }, 5000);
             console.log('Error calling chitietdslop: ',error)
         }
     }
@@ -57,7 +70,8 @@ function XepLop() {
             }} className="w-12" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
                 </div>
                 }
-            
+            <SuccessAlert isopen={success} message='Thêm học sinh thành công' />
+            <FailAlert isopen={fail} message='Thêm học sinh không thành công'/>
         </div>
     )
 }

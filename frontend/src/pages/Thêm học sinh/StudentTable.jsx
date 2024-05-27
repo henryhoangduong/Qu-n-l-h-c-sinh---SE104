@@ -12,7 +12,7 @@ function StudentTable() {
             const response = await axios.get(`${url}/students`)
               setStudent(response.data)
               console.log(typeof response.data[0].ngaysinh)
-                console.log('response: ',response.data)
+              console.log('response: ',response.data)
             } catch (error) {
                console.log("Error fetching data: ",error) 
             }
