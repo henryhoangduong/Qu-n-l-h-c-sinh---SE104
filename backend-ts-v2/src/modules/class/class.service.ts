@@ -18,7 +18,7 @@ export class ClassService {
   }
   create(classCreateDto: ClassCreateDto): Promise<Lop> {
     const Class = {
-      classCreateDto,
+      ...classCreateDto,
       malop: Math.floor(Math.random() * 100000) + 1,
     };
     const newClass = this.lopRepository.create(Class);
