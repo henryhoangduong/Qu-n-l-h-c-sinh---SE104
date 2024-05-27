@@ -7,7 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const url = process.env.REACT_APP_API_URL;
 
-function ClassTable() {
+function ClassTable({setSuccess, setFail}) {
     const [Class, setClass] = useState([]);
 
     useEffect(() => {
@@ -21,6 +21,24 @@ function ClassTable() {
         };
         fetchData();
     }, []);
+    const handleDelete = async (id) => {
+        try {
+            const response = await axios.delete(`${url}/class/${id}`)
+            console.log(response)
+            if (response) {
+                    setSuccess(true);
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 5000);
+                }
+        } catch (error) {
+            setFail(true);
+                setTimeout(() => {
+                    setFail(false);
+                }, 5000);
+            console.log(error)
+        }
+    }
 
     return (
         <div className="m-6 h-max w-max rounded-lg overflow-x-auto" style={{ border: 'black solid 3px' }}>
@@ -52,7 +70,7 @@ function ClassTable() {
                                 {item.tenlop.slice(0, 2)}
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <FontAwesomeIcon icon={faTrash} />
+                                <FontAwesomeIcon onClick={()=>{handleDelete(item.malop)}} icon={faTrash} cursor='pointer'/>
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <ChinhSuaClass id={item.malop} />

@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Put, Res, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Res,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ClassService } from './class.service';
 import { Lop } from 'src/entities';
 import { ClassCreateDto } from 'src/data-object/class-create.dto';
@@ -34,5 +43,10 @@ export class ClassController {
     }
     const lopChanged = await this.classService.update(Class);
     return res.status(200).json({ lopChanged });
+  }
+  @Delete('/:id')
+  async delete(@Param('id') malop: number): Promise<void> {
+    console.log(malop);
+    return await this.classService.delete(malop);
   }
 }

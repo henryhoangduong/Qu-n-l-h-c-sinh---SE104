@@ -5,7 +5,7 @@ import { useState } from "react"
 
 const url = process.env.REACT_APP_API_URL
 
-function ThayDoiThamSo({seSuccess, setFail}) {
+function ThayDoiThamSo({setSuccess, setFail}) {
 
     const [thamso, setThamso] = useState({
         'diemdat': '', 'tuoitoithieu': '',
@@ -31,12 +31,13 @@ function ThayDoiThamSo({seSuccess, setFail}) {
         }
         fetchData()
     }, [])
-    const handleSave = async () => {
+    const handleSave = async (e) => {
+        e.preventDefault();
         try {
             const response = await axios.post(`${url}/thamso`, thamso)
-            seSuccess(true);
+            setSuccess(true);
                 setTimeout(() => {
-                    seSuccess(false);
+                    setSuccess(false);
                 }, 5000);
         } catch (error) {
             setFail(true);
@@ -157,7 +158,7 @@ function ThayDoiThamSo({seSuccess, setFail}) {
                         </div>
                         </div>
                         <div style={{ width: "90%" }}>
-                        <button  onClick={handleSave} className="button button--light">
+                        <button onClick={(event) => { handleSave(event) }} className="button button--light">
                                 Save Change
                             </button>
                         </div>

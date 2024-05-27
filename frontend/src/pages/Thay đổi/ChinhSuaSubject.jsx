@@ -32,7 +32,7 @@ export default function ChinhSuaSubject({id}) {
   return (
     <>
           <div onClick={() => setOpenModal(true)}>
-              <FontAwesomeIcon icon={faPen}  />
+              <FontAwesomeIcon icon={faPen}  cursor='pointer'/>
       </div>
         <Modal  show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>Thay đổi</Modal.Header>

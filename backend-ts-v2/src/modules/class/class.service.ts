@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Lop } from 'src/entities';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -27,5 +27,14 @@ export class ClassService {
   async update(lop: Lop): Promise<Lop> {
     const lopChanged = await this.lopRepository.save(lop);
     return lopChanged;
+  }
+  async delete(malop: number): Promise<void> {
+    const lop = await this.lopRepository.findOne({ where: { malop } });
+    console.log('lop:', lop);
+    if (!lop) {
+      throw new NotFoundException(`Lop with ma ${malop} not found`);
+    } else {
+      await this.lopRepository.remove(lop);
+    }
   }
 }

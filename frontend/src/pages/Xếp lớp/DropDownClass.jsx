@@ -33,6 +33,7 @@ export default function DropDownClass({ data, name,handleClick}) {
              <li onClick={() => {
                handleClick(item.malop)
                setNameState(item.tenlop)
+               setIsOpen(false)
              }} name='malop' value={item.malop} key={item.malop}>{ item.tenlop}</li>
            ))}
         </ul>

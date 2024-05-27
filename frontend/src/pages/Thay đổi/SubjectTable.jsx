@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 const url = process.env.REACT_APP_API_URL;
 
-function SubjectTable() {
+function SubjectTable({setSuccess, setFail}) {
     const [subject, setSubject] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,18 @@ function SubjectTable() {
     const handleDelete = async (mamonhoc) => {
             try {
                 const response = await axios.delete(`${url}/monhoc/${mamonhoc}`);
+                if (response) {
+                    setSuccess(true);
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 5000);
+                }
+                
             } catch (error) {
+                setFail(true);
+                setTimeout(() => {
+                    setFail(false);
+                }, 5000);
                 console.log("Error deleting data: ", error);
             }
     }
@@ -54,7 +65,7 @@ function SubjectTable() {
                                 {item.heso}
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <FontAwesomeIcon onClick={()=>{handleDelete(item.mamonhoc)}} icon={ faTrash} />
+                                <FontAwesomeIcon onClick={()=>{handleDelete(item.mamonhoc)}} icon={ faTrash} cursor='pointer'/>
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <ChinhSuaSubject id={item.mamonhoc}/>
