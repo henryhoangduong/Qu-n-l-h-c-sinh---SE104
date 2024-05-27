@@ -1,6 +1,7 @@
 import "./ThemHocSinh.css";
 import React, { useState } from "react";
 import axios from 'axios';
+import StudentTable from "./StudentTable";
 
 const url = process.env.REACT_APP_API_URL
 
@@ -19,7 +20,7 @@ function ThemHocSinh() {
         event.preventDefault();
         const formattedBirthday = `${year}-${month}-${day}`;
         setBirthday(formattedBirthday);
-        axios.post(`${url}/students`, {
+        axios.post(`${url}/students/create`, {
             email: email,
             password: password,
             hoten: name,
@@ -37,7 +38,7 @@ function ThemHocSinh() {
 
     return (
         <>
-             <div class="flex m-6 relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
+             <div class="flex relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
                 
                 <div className="profile-content" style={{ marginLeft: 40, width: "100vw" }}>
                     <form className="flex flex-col">
@@ -151,6 +152,7 @@ function ThemHocSinh() {
                     </form>
                 </div>
             </div>
+            <StudentTable/>
         </>
     );
 }

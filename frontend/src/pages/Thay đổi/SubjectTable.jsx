@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ChinhSuaSubject from './ChinhSuaSubject';
+import ThemMonhoc from './ThemMonhoc';
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -26,6 +28,8 @@ function SubjectTable() {
                         <th scope="col" className="px-6 py-3">Mã</th>
                         <th scope="col" className="px-6 py-3">Môn học</th>
                         <th scope="col" className="px-6 py-3">Hệ số</th>
+                        <th scope="col" className="px-6 py-3">Chỉnh sửa</th>
+                        <th scope="col" className="px-6 py-3"><ThemMonhoc/></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +43,9 @@ function SubjectTable() {
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {item.heso}
+                            </th>
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <ChinhSuaSubject id={item.mamonhoc}/>
                             </th>
                         </tr>
                     ))}

@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import axios from "axios"
-import styles from  './Change.module.css'
+import styles from  './ThayDoiThamSo.module.css'
 import { useState } from "react"
 
 const url = process.env.REACT_APP_API_URL
 
-function Change() {
+function ThayDoiThamSo() {
 
     const [thamso, setThamso] = useState({
         'diemdat': '', 'tuoitoithieu': '',
@@ -162,4 +162,4 @@ function Change() {
     )
 }
 
-export default Change
+export default ThayDoiThamSo

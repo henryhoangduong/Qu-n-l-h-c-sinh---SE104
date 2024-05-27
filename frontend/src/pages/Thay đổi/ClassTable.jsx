@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ChinhSuaClass from './ChinhSuaClass';
+import ThemLop from './ThemLop';
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -27,6 +29,8 @@ function ClassTable() {
                         <th scope="col" className="px-6 py-3">Lớp</th>
                         <th scope="col" className="px-6 py-3">Sỉ số</th>
                         <th scope="col" className="px-6 py-3">Khối</th>
+                        <th scope="col" className="px-6 py-3">Chỉnh sửa</th>
+                        <th scope="col" className="px-6 py-3"><ThemLop/></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +47,9 @@ function ClassTable() {
                             </th>
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {item.tenlop.slice(0, 2)}
+                            </th>
+                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <ChinhSuaClass id={item.malop} />
                             </th>
                         </tr>
                     ))}
