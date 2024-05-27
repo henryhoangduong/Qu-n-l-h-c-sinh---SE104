@@ -5,7 +5,7 @@ import { useState } from "react"
 
 const url = process.env.REACT_APP_API_URL
 
-function ThayDoiThamSo() {
+function ThayDoiThamSo({seSuccess, setFail}) {
 
     const [thamso, setThamso] = useState({
         'diemdat': '', 'tuoitoithieu': '',
@@ -32,12 +32,17 @@ function ThayDoiThamSo() {
         fetchData()
     }, [])
     const handleSave = async () => {
-
         try {
             const response = await axios.post(`${url}/thamso`, thamso)
-            console.log('saving')
-            console.log(response.data)
+            seSuccess(true);
+                setTimeout(() => {
+                    seSuccess(false);
+                }, 5000);
         } catch (error) {
+            setFail(true);
+                setTimeout(() => {
+                    setFail(false);
+                }, 5000);
             console.log('Error saving tham so: ',error)   
         }
     }

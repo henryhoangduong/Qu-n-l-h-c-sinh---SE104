@@ -2,6 +2,8 @@ import "./ThemHocSinh.css";
 import React, { useState } from "react";
 import axios from 'axios';
 import StudentTable from "./StudentTable";
+import { SuccessAlert } from "../../layouts/Components/Alert/Success";
+import { FailAlert } from "../../layouts/Components/Alert/Fail";
 
 const url = process.env.REACT_APP_API_URL
 
@@ -15,6 +17,8 @@ function ThemHocSinh() {
     const [birthday, setBirthday] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
+    const [success, seSuccess] = useState(false)
+    const [fail,setFail] = useState(false)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,9 +34,17 @@ function ThemHocSinh() {
         })
             .then(function (response) {
                 console.log(response);
+                seSuccess(true);
+                setTimeout(() => {
+                    seSuccess(false);
+                }, 5000);
             })
             .catch(function (error) {
                 console.log(error);
+                setFail(true);
+                setTimeout(() => {
+                    setFail(false);
+                }, 5000);
             });
     };
 
@@ -152,7 +164,9 @@ function ThemHocSinh() {
                     </form>
                 </div>
             </div>
-            <StudentTable/>
+            <StudentTable />
+            <SuccessAlert isopen={success} message='Thêm học sinh thành công' />
+            <FailAlert isopen={fail} message='Thêm học sinh không thành công'/>
         </>
     );
 }

@@ -17,18 +17,18 @@ function Icon() {
   );
 }
  
-export function SuccessAlert({message,isopen}) {
+export function FailAlert({message, isopen}) {
   return (
       <Alert
-      open={isopen}
-      icon={<Icon />}
-      animate={{
+          open={isopen}
+  icon={<Icon />}
+  animate={{
           mount: { x: 0 },
           unmount: { x: 100 },
         }}
-      className="w-50 fixed top-4 right-4 rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946] z-50"
-    >
-      {message}
-    </Alert>
+      className="w-50 fixed top-4 right-4 rounded-none border-l-4 border-red-600 bg-red-600/10 font-medium text-red-600 z-50"
+>
+  {message}
+</Alert>
   );
 }
