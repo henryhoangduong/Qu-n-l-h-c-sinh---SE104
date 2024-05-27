@@ -50,7 +50,7 @@ function ThemHocSinh() {
 
     return (
         <>
-             <div class="flex relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
+             <div class="flex relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px' , backgroundColor: 'whitesmoke'}}>
                 
                 <div className="profile-content" style={{ marginLeft: 40, width: "100vw" }}>
                     <form className="flex flex-col">
@@ -157,7 +157,7 @@ function ThemHocSinh() {
 
                         </div>
                         <div style={{ width: "90%" }}>
-                            <button type="submit" className="button button--light mb-1" onClick={handleSubmit}>
+                            <button type="submit" className="button button--light mb-5" onClick={handleSubmit}>
                                 Thêm học sinh
                             </button>
                         </div>

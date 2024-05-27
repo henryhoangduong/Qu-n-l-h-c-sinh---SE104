@@ -43,7 +43,10 @@ function TongKetHocKi() {
         ) : semester === "2" ? (
           <div>Chưa có dữ liệu cho học kì này.</div>
         ) : (
-          <table className="table" style={{width:"100%" ,border: 'black solid 3px'}}>
+
+          <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '100%' }}>
+          <div class="overflow-x-hidden overflow-y-auto">
+          <table className="table" style={{width:"100%" ,}}>
             <thead className="text-xs text-black uppercase" style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
               <tr>
                 <th>No</th>
@@ -64,7 +67,7 @@ function TongKetHocKi() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> </div> </div>
         )}
       </div>
     </>

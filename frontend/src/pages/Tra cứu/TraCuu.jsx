@@ -25,7 +25,7 @@ function TraCuu() {
             <Filter />
             <div className='flex flex-row justify-between items-center'>
                 <SearchByName handleSearch={handleSearch} />
-                <div className="px-3 rounded-lg"  onClick={() => { Search(name) }} style={{border:'black solid 3px',cursor:'pointer'}}>
+                <div className="px-3 rounded-lg"  onClick={() => { Search(name) }} style={{border:'black solid 3px',cursor:'pointer', backgroundColor :'#81C3CF' , padding : '5px 20px'}}>
                 Tìm
             </div>  
             </div> 

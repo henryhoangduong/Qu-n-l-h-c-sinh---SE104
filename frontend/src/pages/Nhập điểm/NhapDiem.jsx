@@ -11,7 +11,7 @@ const url = process.env.REACT_APP_API_URL
 function NhapDiem() {
     return (
         <>
-            <h1>Nhập điểm</h1>
+            <p className="Title">Nhập điểm</p>
             <StudentTable />
         </>
     )
@@ -44,7 +44,7 @@ function Modal({ mahs, closeModal, handleMahsChange }) {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-                <h2 className="text-xl font-bold mb-4">Nhập điểm</h2>
+                <h2 className="text-xl font-bold mb-4 ">Nhập điểm</h2>
                 <form>
                     <div className="mb-4">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Môn</label>
@@ -129,10 +129,10 @@ function StudentTable() {
     };
 
     return (
-        <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '1020px' }}>
+        <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '100%' }}>
             <div class="overflow-x-hidden overflow-y-auto">
-                <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{ width: '1020px' }}>
-                    <thead class="text-xs text-black uppercase  " style={{ backgroundColor: '#BA9CE8', borderBottom: 'black solid 3px' }}>
+                <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{ width: '100%' }}>
+                    <thead class="text-xs text-black uppercase  " style={{ backgroundColor: '#51A9FF', borderBottom: 'black solid 3px' }}>
                         <tr>
                             <th scope="col" class="px-6 py-3 ">
                                 Họ và tên

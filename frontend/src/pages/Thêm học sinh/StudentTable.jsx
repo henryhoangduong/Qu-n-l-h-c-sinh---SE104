@@ -33,7 +33,7 @@ function StudentTable() {
 <div class="mt-6 h-max relative overflow-x-auto rounded-lg" style={{border: 'black solid 3px'}}>
   <div class="max-h-96" style={{width:'100%'}}>
     <table class="text-sm text-left rtl:text-right text-gray-500 " style={{width:'100%'}}>
-      <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#B2CCFE',borderBottom:'black solid 3px'}}>
+      <thead class="text-xs text-black uppercase  " style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
         <tr>
           <th scope="col" class="px-6 py-3 ">
             Họ và tên
