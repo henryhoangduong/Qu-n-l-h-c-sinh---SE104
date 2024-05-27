@@ -14,17 +14,15 @@ export class StudentService {
     private readonly hocsinhRepository: Repository<Hocsinh>,
     private readonly thamsoService: ThamsoService,
   ) {}
-  async create(studentCreateDto: StudentCreateDto): Promise<Hocsinh> {
+  async create(studentCreateDto: StudentCreateDto): Promise<Hocsinh | string> {
     const thamso = await this.thamsoService.read();
     const tuoitoithieu = thamso[0].tuoitoithieu;
     const tuoitoida = thamso[0].tuoitoida;
-    console.log('tuoi toi thieu: ', tuoitoithieu);
-    console.log('tuoi toi da: ', tuoitoida);
     const dob_convert = new Date(studentCreateDto.ngaysinh.toString());
     const currentDate = new Date();
     const age = currentDate.getFullYear() - dob_convert.getFullYear();
     if (age < tuoitoithieu || age > tuoitoida) {
-      throw new Error('Age is not within the required range.');
+      return 'Tuổi không cho phép';
     }
     const student = {
       ...studentCreateDto,

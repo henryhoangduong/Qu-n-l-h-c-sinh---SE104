@@ -18,7 +18,8 @@ function ThemHocSinh() {
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [success, seSuccess] = useState(false)
-    const [fail,setFail] = useState(false)
+    const [fail, setFail] = useState(false)
+    const [message,setMessage]=useState('')
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -40,8 +41,14 @@ function ThemHocSinh() {
                 }, 5000);
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error)
                 setFail(true);
+                if (error.response?.data?.message[0].length !== 0) {
+                    setMessage(error.response?.data?.message[0]);
+                } else {
+                    setMessage('Thêm học sinh không thành công');
+                }
+                setMessage(error.response?.data?.message[0] || "Thêm học sinh không thành công");
                 setTimeout(() => {
                     setFail(false);
                 }, 5000);
@@ -166,7 +173,7 @@ function ThemHocSinh() {
             </div>
             <StudentTable />
             <SuccessAlert isopen={success} message='Thêm học sinh thành công' />
-            <FailAlert isopen={fail} message='Thêm học sinh không thành công'/>
+            <FailAlert isopen={fail} message={message} />
         </>
     );
 }

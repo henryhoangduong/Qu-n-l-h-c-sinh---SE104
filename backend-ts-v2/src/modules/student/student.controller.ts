@@ -9,7 +9,9 @@ import { StudentOptionsDto } from 'src/data-object/studentoptions.dto';
 export class StudentsController {
   constructor(private readonly studentService: StudentService) {}
   @Post('create')
-  create(@Body() studentCreateDto: StudentCreateDto): Promise<Hocsinh> {
+  create(
+    @Body() studentCreateDto: StudentCreateDto,
+  ): Promise<Hocsinh | string> {
     return this.studentService.create(studentCreateDto);
   }
 
