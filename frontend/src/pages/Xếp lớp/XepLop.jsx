@@ -54,10 +54,7 @@ function XepLop() {
                 <div
                    onClick={() => {
                 handleSave(ClassChoose,studentListChoose)
-            }} className="w-12" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
-                </div>
-                }
-            
+            }} className="w-12 right-0" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
         </div>
     )
 }
