@@ -19,7 +19,7 @@ function ThemHocSinh() {
         event.preventDefault();
         const formattedBirthday = `${year}-${month}-${day}`;
         setBirthday(formattedBirthday);
-        axios.post(`${url}/students`, {
+        axios.post(`${url}/students/create`, {
             email: email,
             password: password,
             hoten: name,
