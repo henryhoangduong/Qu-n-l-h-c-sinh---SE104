@@ -2,6 +2,7 @@ import { Controller, Post, Body, Res, Param, Put, Get } from '@nestjs/common';
 import { MonhocService } from './monhoc.service';
 import { MonhocDto } from 'src/data-object/monhoc.dto';
 import { Response } from 'express';
+import { Monhoc } from 'src/entities';
 
 @Controller('monhoc')
 export class MonhocController {
@@ -9,6 +10,10 @@ export class MonhocController {
   @Get()
   async read(@Res() res: Response): Promise<Response> {
     return res.status(200).json(await this.monhocService.findAll());
+  }
+  @Get('/:id')
+  async findById(@Param('id') mamonhoc): Promise<Monhoc> {
+    return this.monhocService.findOne({ mamonhoc: mamonhoc });
   }
   @Put('/:id')
   async change(

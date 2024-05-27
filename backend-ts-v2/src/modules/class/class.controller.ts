@@ -15,6 +15,10 @@ export class ClassController {
   async create(@Body() classCreateDto: ClassCreateDto): Promise<Lop> {
     return this.classService.create(classCreateDto);
   }
+  @Get('/:id')
+  async findById(@Param('id') malop): Promise<Lop> {
+    return this.classService.findOne(malop);
+  }
   @Put('/:id')
   async change(
     @Body() { tenlop }: { tenlop: string },
