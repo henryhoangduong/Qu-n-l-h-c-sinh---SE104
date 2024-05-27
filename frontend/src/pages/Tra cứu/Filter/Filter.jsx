@@ -38,7 +38,7 @@ function Filter() {
                 <DropDownMark data={mark} name='Điểm' option={handleOptions}/>
                 <DropDownAge data={age} name='Tuổi' option={handleOptions}/>
             </div>
-            <div className="px-3 rounded-lg" style={{border:'black solid 3px',cursor:'pointer'}}>
+            <div className="px-3 rounded-lg" style={{border:'black solid 3px',cursor:'pointer', backgroundColor :'#81C3CF' , padding : '5px 20px'}}>
                 Lọc
             </div>
     </div>    

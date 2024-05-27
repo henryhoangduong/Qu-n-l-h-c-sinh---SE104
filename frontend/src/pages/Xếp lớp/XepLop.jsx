@@ -62,7 +62,7 @@ function XepLop() {
                 <ChonHocSinhModal handleClick={handleClickStudent} />
             </div>
             <StudentTable data={studentListChoose} />
-            {studentListChoose.length !== 0 &&
+            {studentListChoose.length !== 0 && 
                 <div className="flex flex-row justify-end items-end">
                 <div
                    onClick={() => {
@@ -70,8 +70,7 @@ function XepLop() {
             }} className="w-12" style={{border: 'black solid 3px', padding:'5px 10px 5px 10px',backgroundColor:'#c1fbc0',cursor:'pointer'}} >Lưu</div>
                 </div>
                 }
-            <SuccessAlert isopen={success} message='Thêm học sinh thành công' />
-            <FailAlert isopen={fail} message='Thêm học sinh không thành công'/>
+            
         </div>
     )
 }

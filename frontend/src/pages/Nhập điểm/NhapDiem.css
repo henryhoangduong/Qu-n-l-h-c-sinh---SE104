@@ -1,3 +1,19 @@
 .sidebar__icon:hover{
     cursor: pointer;
 }
+
+.Title
+{
+    width: 100%;
+    padding: 20px;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    background-color: #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px #ccc;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    border:none ; 
+    margin-bottom: 100px;
+}

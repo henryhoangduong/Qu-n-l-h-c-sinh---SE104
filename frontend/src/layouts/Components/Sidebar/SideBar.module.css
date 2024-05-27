@@ -32,7 +32,7 @@
   .btn-toggle:hover,
   .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
-    background-color: #F0B37C;
+    background-color: #C133CB;
   }
   
   .btn-toggle::before {
@@ -59,7 +59,7 @@
   }
   .btn-toggle-nav a:hover,
   .btn-toggle-nav a:focus {
-    background-color: #F0B37C;
+    background-color: #C133Cb;
   }
   
   .fw-semibold { font-weight: 600; }
@@ -99,11 +99,11 @@
 }
 
 .sidebar_item:hover{
-    background-color: #F0B37C;
+    background-color: #C133Cb;
     cursor: pointer;
 }
 
 
 .sidebar_item.active {
-    background-color: #F0B37C;
+    background-color: #B274DC;
 }

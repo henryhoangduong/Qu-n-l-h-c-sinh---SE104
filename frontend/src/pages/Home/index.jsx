@@ -48,10 +48,10 @@ function Login() {
     return (
         <div className="flex flex-col px-16">
             <div class=" flex flex-row w-full h-max">
-                <Card description='Số môn' number={subject.length} color="#c1fbc0"/>
-                <Card description='Số học sinh' number={student.length} color="#F0D0FB"/>
-                <Card description='Số lớp' number={Class.length} />
-                <Card description='Tham số' number={Object.keys(thamSo).length} color="#f3fd99"/>
+                <Card description='Số môn' number={subject.length} color="#74A8DC"/>
+                <Card description='Số học sinh' number={student.length} color="#A174DC"/>
+                <Card description='Số lớp' number={Class.length} color="#81C3CF" />
+                <Card description='Tham số' number={Object.keys(thamSo).length} color="#91B0BF"/>
             </div>
             <StudentTable />
             <div className="w-max container ">

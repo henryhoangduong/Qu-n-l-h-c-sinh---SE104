@@ -52,10 +52,12 @@ function TongKetHocKi() {
       </div>
       <div className="table-wrapper">
         {semester === null ? (
-          <div>Vui lòng chọn học kì để xem báo cáo.</div>
+          <div>Vui lòng chọn môn học để xem báo cáo.</div>
         ) : (
-          <table className="table" style={{width:"100%" , border: 'black solid 3px' ,}}>
-            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#BA9CE8',borderBottom:'black solid 3px'}}>
+          <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '1020px' }}>
+          <div class="overflow-x-hidden overflow-y-auto">
+          <table className="table" style={{width:"100%"  ,}}>
+            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
               <tr>
                 <th>No</th>
                 <th scope="col" className="px-14 py-3">Lớp</th>
@@ -75,7 +77,7 @@ function TongKetHocKi() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> </div> </div>
         )}
       </div>
     </>

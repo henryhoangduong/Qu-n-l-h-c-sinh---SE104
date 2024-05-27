@@ -2,22 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./TongKetHocKi.css";
 import axios from "axios";
 
-const url = process.env.REACT_APP_API_URL
-
+const url = process.env.REACT_APP_API_URL;
 
 function TongKetHocKi() {
   const [classes, setClasses] = useState([]);
-  const [semester, setSemester] = useState(null); // Initial state is null, meaning no semester is selected
+  const [semester, setSemester] = useState(null);
 
   useEffect(() => {
-    if (semester !== null) {
-      axios.get(`${url}/baocao/hocki`)
+    if (semester === "1") {
+      axios.get(`${url}/baocao/hocki`, { params: { semester } })
         .then(response => {
           setClasses(response.data);
         })
         .catch(error => {
           console.error('Error fetching classes:', error);
         });
+    } else if (semester === "2") {
+      setClasses([]);
     }
   }, [semester]);
 
@@ -34,15 +35,19 @@ function TongKetHocKi() {
           <option value="" disabled>Chọn học kì</option>
           <option value="1">Học kì 1</option>
           <option value="2">Học kì 2</option>
-          {/* Add more options if there are more semesters */}
         </select>
       </div>
       <div className="table-wrapper">
         {semester === null ? (
           <div>Vui lòng chọn học kì để xem báo cáo.</div>
+        ) : semester === "2" ? (
+          <div>Chưa có dữ liệu cho học kì này.</div>
         ) : (
-          <table className="table" style={{width:"100%" ,border: 'black solid 3px'}}>
-            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#BA9CE8',borderBottom:'black solid 3px'}}>
+
+          <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '100%' }}>
+          <div class="overflow-x-hidden overflow-y-auto">
+          <table className="table" style={{width:"100%" ,}}>
+            <thead className="text-xs text-black uppercase" style={{backgroundColor:'#51A9FF',borderBottom:'black solid 3px'}}>
               <tr>
                 <th>No</th>
                 <th scope="col" className="px-14 py-3">Lớp</th>
@@ -62,7 +67,7 @@ function TongKetHocKi() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> </div> </div>
         )}
       </div>
     </>

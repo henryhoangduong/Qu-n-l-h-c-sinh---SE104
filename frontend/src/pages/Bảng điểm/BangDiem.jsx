@@ -22,7 +22,7 @@ const subjectMapping = {
 function BangDiem() {
     return (
         <>
-            <h1>Bảng Điểm</h1>
+            <h1 className="Title">Bảng Điểm</h1>
             <StudentTable />
         </>
     )
@@ -149,10 +149,10 @@ function StudentTable() {
     };
 
     return (
-        <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '1020px' }}>
+        <div class="mt-6 relative overflow-x-auto rounded-lg" style={{ border: 'black solid 3px', width: '100%' }}>
             <div class="overflow-x-hidden overflow-y-auto">
-                <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{ width: '1020px' }}>
-                    <thead class="text-xs text-black uppercase  " style={{ backgroundColor: '#BA9CE8', borderBottom: 'black solid 3px' }}>
+                <table class="w-max text-sm text-left rtl:text-right text-gray-500 " style={{ width: '100%' }}>
+                    <thead class="text-xs text-black uppercase  " style={{ backgroundColor: '#51A9FF', borderBottom: 'black solid 3px' }}>
                         <tr>
                             <th scope="col" class="px-6 py-3 ">
                                 Họ và tên
